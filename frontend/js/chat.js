@@ -4,6 +4,7 @@ import { isOnline, matchLocalFaq } from "./offline.js";
 import { getFarmContext } from "./farm.js";
 
 const history = [];
+const MAX_HISTORY = 24; // keep last 24 turns in memory
 
 export async function sendMessage(message, language, mode) {
   const cleanMessage = String(message || "").trim();
@@ -50,8 +51,14 @@ export async function sendMessage(message, language, mode) {
     const data = await res.json();
     if (!data?.reply) throw new Error("Chat API returned no reply");
 
-    history.push({ role: "user", content: cleanMessage });
-    history.push({ role: "assistant", content: data.reply });
+    // Only record AI-backed replies in history; fallback/offline replies
+    // do not provide useful context for future turns.
+    if (data.source === "ai") {
+      history.push({ role: "user", content: cleanMessage });
+      history.push({ role: "assistant", content: data.reply });
+      // Trim in-place so the array never grows beyond MAX_HISTORY pairs
+      while (history.length > MAX_HISTORY * 2) history.splice(0, 2);
+    }
 
     return data;
   } catch (err) {

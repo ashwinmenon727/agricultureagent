@@ -46,7 +46,8 @@ async def _fetch_india_mandi_live(limit: int = 15) -> list[dict]:
             response.raise_for_status()
             data = response.json()
     except Exception as exc:
-        logger.warning("India mandi API error: %s", exc)
+        # Log the exception type only — never log the URL/response which may contain the api-key.
+        logger.warning("India mandi API error: %s", type(exc).__name__)
         return []
 
     records = data.get("records") or []

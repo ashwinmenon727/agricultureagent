@@ -55,7 +55,8 @@ export function stopListening() {
 export function speak(text, languageCode) {
   if (!isSpeechOutSupported() || !text) return;
   window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
+  // Limit to 500 chars — long strings are unreliable on mobile TTS engines.
+  const utter = new SpeechSynthesisUtterance(text.slice(0, 500));
   utter.lang = speechLang(languageCode);
   utter.rate = 0.95;
   window.speechSynthesis.speak(utter);

@@ -1,11 +1,12 @@
 import json
 import logging
 import os
+import re
 from pathlib import Path
 from typing import Literal
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -46,6 +47,46 @@ app.add_middleware(
     allow_headers=["Content-Type", "Authorization"],
 )
 
+# Security headers middleware — applied to every response.
+from starlette.middleware.base import BaseHTTPMiddleware  # noqa: E402
+from starlette.requests import Request as StarletteRequest  # noqa: E402
+
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: StarletteRequest, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["X-XSS-Protection"] = "0"  # modern browsers handle this natively
+        return response
+
+
+app.add_middleware(SecurityHeadersMiddleware)
+
+# Simple in-process rate limiter for the chat endpoint.
+import time
+from collections import defaultdict
+from threading import Lock
+
+_rate_lock = Lock()
+_rate_store: dict[str, list[float]] = defaultdict(list)
+_RATE_LIMIT = int(os.getenv("CHAT_RATE_LIMIT", "10"))  # requests per window
+_RATE_WINDOW = 60  # seconds
+
+
+def _check_rate_limit(ip: str) -> bool:
+    """Return True if request is allowed, False if rate-limited."""
+    now = time.monotonic()
+    with _rate_lock:
+        timestamps = _rate_store[ip]
+        # Drop entries outside the window
+        _rate_store[ip] = [t for t in timestamps if now - t < _RATE_WINDOW]
+        if len(_rate_store[ip]) >= _RATE_LIMIT:
+            return False
+        _rate_store[ip].append(now)
+        return True
+
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=4000)
@@ -79,6 +120,9 @@ async def crops():
 
 @app.get("/api/faqs/{language}")
 async def faqs(language: str):
+    # Validate language to a safe ISO 639-1/-3 code before path construction.
+    if not re.fullmatch(r"[a-z]{2,8}", language):
+        raise HTTPException(status_code=400, detail="Invalid language code")
     path = DATA / "faqs" / f"{language}.json"
     if not path.exists():
         path = DATA / "faqs" / "en.json"
@@ -88,8 +132,8 @@ async def faqs(language: str):
 
 @app.get("/api/geocode/search")
 async def geocode_search(
-    q: str = Query(min_length=2),
-    language: str = "en",
+    q: str = Query(min_length=2, max_length=200),
+    language: str = Query(default="en", max_length=8, pattern=r"^[a-z]{2,8}$"),
 ):
     return {"results": await search_locations(q, language=language)}
 
@@ -140,7 +184,14 @@ async def market_rates(
 
 
 @app.post("/api/chat", response_model=ChatResponse)
-async def chat(body: ChatRequest):
+async def chat(body: ChatRequest, request: StarletteRequest):
+    client_ip = request.client.host if request.client else "unknown"
+    if not _check_rate_limit(client_ip):
+        raise HTTPException(
+            status_code=429,
+            detail="Too many requests. Please wait a moment and try again.",
+            headers={"Retry-After": str(_RATE_WINDOW)},
+        )
     result = await get_agent_reply(
         message=body.message.strip(),
         language=body.language,

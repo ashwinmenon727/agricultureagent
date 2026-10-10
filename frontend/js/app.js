@@ -11,7 +11,7 @@ import {
   t,
 } from "./i18n.js";
 
-import { sendMessage } from "./chat.js";
+import { sendMessage, clearHistory } from "./chat.js";
 import { renderDashboard } from "./dashboard.js";
 import { refreshLiveData } from "./live.js";
 import { initJournal } from "./journal.js";
@@ -71,7 +71,7 @@ function appendMessage(text, role, meta = "") {
   div.className = `msg ${role}`;
   div.textContent = text;
   // Add staggered animation delay based on message count
-  div.style.animationDelay = `${msgCounter * 80}ms`;
+  div.style.animationDelay = `${Math.min(msgCounter * 80, 200)}ms`;
   chatEl.appendChild(div);
   msgCounter++;
 
@@ -144,10 +144,14 @@ function observeScrollReveal() {
 
 /* ---------- Animate numbers counting up ---------- */
 function animateCountUp(element, target, suffix = "") {
+  if (!target || target <= 0) {
+    element.textContent = (target || 0) + suffix;
+    return;
+  }
   let current = 0;
   const duration = 800;
   const step = Math.max(1, Math.floor(target / 30));
-  const interval = duration / (target / step);
+  const interval = Math.max(16, duration / Math.ceil(target / step));
 
   const timer = setInterval(() => {
     current += step;
@@ -293,6 +297,7 @@ async function bootApp(language) {
 
   chatEl.innerHTML = "";
   msgCounter = 0;
+  clearHistory();
   appendMessage(t("welcomeTitle"), "bot");
   appendMessage(t("welcomeBody"), "bot");
 

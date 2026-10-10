@@ -71,10 +71,16 @@ export async function loadLocale(code) {
       return;
     }
   } catch (_) {
-    /* offline */
+    /* offline or locale not found — try English fallback */
   }
-  const res = await fetch(`/locales/${fallback}.json`);
-  strings = await res.json();
+  try {
+    const res = await fetch(`/locales/${fallback}.json`);
+    if (res.ok) {
+      strings = await res.json();
+    }
+  } catch (_) {
+    /* fully offline — strings stays as empty object; t() returns keys */
+  }
 }
 
 function getNested(key) {

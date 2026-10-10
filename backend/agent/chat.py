@@ -192,7 +192,11 @@ async def call_llm(
             raise LLMUnavailableError(str(exc)) from exc
 
         data = response.json()
-        return data["choices"][0]["message"]["content"].strip()
+        try:
+            content = data["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError):
+            raise LLMUnavailableError("AI provider returned an unexpected response format") from None
+        return content.strip() if content else None
 
 
 def _extract_llm_error_detail(response: httpx.Response) -> str:

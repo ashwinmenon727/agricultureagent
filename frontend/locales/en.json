@@ -23,5 +23,17 @@
   "listening": "Listening...",
   "thinking": "Thinking...",
   "errorNetwork": "Could not reach server. Showing offline answers if available.",
-  "settings": "Settings"
+  "settings": "Settings",
+  "locationRequired": "Set a farm location to see live weather and alerts",
+  "liveWeather": "Live weather",
+  "liveData": "Live data",
+  "rainForecast": "Rain forecast",
+  "alerts": "Alerts",
+  "noAlerts": "No active alerts",
+  "irrigationTip": "Irrigation tip",
+  "marketRates": "Market rates",
+  "crops": "Crops",
+  "fertilizers": "Fertilizers",
+  "pesticides": "Pesticides",
+  "referenceData": "Reference data"
 }
