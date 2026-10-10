@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#163824" />
-  <meta name="description" content="AgriGuide — AI farm intelligence for weather, crop health, soil, planning, finance, and field operations." />
-  <title>AgriGuide — Farm Intelligence</title>
+  <meta name="description" content="Vayal — AI farm intelligence for weather, crop health, soil, planning, finance, and field operations." />
+  <title>Vayal — Farm Intelligence</title>
   <link rel="manifest" href="/manifest.json" />
   <link rel="stylesheet" href="/css/style.css?v=4" />
 </head>
@@ -46,10 +46,10 @@
         <span class="brand-mark brand-mark-large"><svg class="ui-icon"><use href="#i-leaf"/></svg></span>
         <div>
           <p class="eyebrow">Farm intelligence platform</p>
-          <h1 id="language-title" data-i18n="appName">AgriGuide</h1>
+          <h1 id="language-title" data-i18n="appName">Vayal</h1>
         </div>
       </div>
-      <p class="subtitle" data-i18n="tagline">Your AI farming assistant for Asia</p>
+      <p class="subtitle" data-i18n="tagline">Vayal, your farming assistant for Asia</p>
       <h2 data-i18n="selectLanguage">Choose your language</h2>
       <div id="lang-grid" class="lang-grid" role="list"></div>
       <button id="lang-continue" class="btn primary ripple-target" type="button" disabled>
@@ -65,14 +65,14 @@
       <div class="brand-block">
         <span class="brand-mark"><svg class="ui-icon"><use href="#i-leaf"/></svg></span>
         <div>
-          <h3>AgriGuide</h3>
+          <h3>Vayal</h3>
           <small>Farm intelligence</small>
         </div>
       </div>
 
       <nav class="nav-list" aria-label="Farm workspace">
         <button class="nav-item active" type="button" data-target="overview"><span class="icon"><svg class="ui-icon"><use href="#i-home"/></svg></span><span>Overview</span></button>
-        <button class="nav-item" type="button" data-target="assistant"><span class="icon"><svg class="ui-icon"><use href="#i-bot"/></svg></span><span>AI Copilot</span></button>
+        <button class="nav-item" type="button" data-target="assistant"><span class="icon"><svg class="ui-icon"><use href="#i-bot"/></svg></span><span>Vayal</span></button>
         <button class="nav-item" type="button" data-target="fields"><span class="icon"><svg class="ui-icon"><use href="#i-fields"/></svg></span><span>Fields</span></button>
         <button class="nav-item" type="button" data-target="calendar"><span class="icon"><svg class="ui-icon"><use href="#i-calendar"/></svg></span><span>Crop calendar</span></button>
         <button class="nav-item" type="button" data-target="soil"><span class="icon"><svg class="ui-icon"><use href="#i-soil"/></svg></span><span>Soil health</span></button>
@@ -103,7 +103,7 @@
       <header class="topbar">
         <div class="topbar-left">
           <button class="mobile-menu icon-btn" type="button" aria-label="Open navigation"><svg class="ui-icon"><use href="#i-menu"/></svg></button>
-          <div class="mobile-brand"><span class="brand-mark mini"><svg class="ui-icon"><use href="#i-leaf"/></svg></span><strong>AgriGuide</strong></div>
+          <div class="mobile-brand"><span class="brand-mark mini"><svg class="ui-icon"><use href="#i-leaf"/></svg></span><strong>Vayal</strong></div>
           <div class="workspace-title">
             <span class="workspace-label">Farm workspace</span>
             <strong id="topbar-field-label">All fields</strong>
@@ -151,7 +151,7 @@
               <div>
                 <p class="eyebrow">Today on your farm</p>
                 <h1>Decide faster. Act with context.</h1>
-                <p class="section-subtitle">Live weather, crop-health signals, market context, records, and your AI copilot in one workflow.</p>
+                <p class="section-subtitle">Live weather, crop-health signals, market context, records, and Vayal in one workflow.</p>
               </div>
               <span id="active-location" class="active-location"></span>
             </div>
@@ -181,8 +181,8 @@
             <div class="agent-hero-header">
               <div class="agent-hero-avatar-wrap"><div class="agent-avatar-hero"><svg class="ui-icon ui-icon-lg"><use href="#i-bot"/></svg></div><span class="status-pulse-ring"></span></div>
               <div class="agent-hero-intro">
-                <div class="agent-badge-row"><span class="agent-pill-badge"><span class="live-status-dot"></span> AI farm copilot</span><span class="agent-pill-location" id="agent-location-label">Live context activates with location</span></div>
-                <h2 id="assistant-title" class="agent-hero-title">Ask one question. AgriGuide checks the context.</h2>
+                <div class="agent-badge-row"><span class="agent-pill-badge"><span class="live-status-dot"></span> Vayal bot</span><span class="agent-pill-location" id="agent-location-label">Live context activates with location</span></div>
+                <h2 id="assistant-title" class="agent-hero-title">Ask one question. Vayal checks the context.</h2>
                 <p class="agent-hero-subtitle">Weather-aware answers, crop planning, pest and disease guidance, fertilizer reasoning, and market context — with offline fallbacks when connectivity is limited.</p>
               </div>
             </div>
@@ -196,7 +196,7 @@
               <div id="location-results" class="location-results hidden" role="listbox"></div>
             </div>
 
-            <div id="chat" class="chat hero-chat-stream" aria-live="polite" aria-label="AgriGuide conversation"></div>
+            <div id="chat" class="chat hero-chat-stream" aria-live="polite" aria-label="Vayal conversation"></div>
 
             <div class="quick-topics" aria-label="Quick prompts">
               <button class="topic-chip" type="button" data-prompt="Should I irrigate today based on the weather forecast?"><span class="topic-icon"><svg class="ui-icon"><use href="#i-droplet"/></svg></span> Irrigation decision</button>
@@ -245,7 +245,7 @@
           <!-- FIELDS -->
           <section id="fields" class="card workspace-section">
             <div class="section-heading">
-              <div><p class="eyebrow">Persistent farm context</p><h2>Fields</h2><p class="section-subtitle compact-copy">Add your real fields once. The selected field is passed to the AI copilot as context.</p></div>
+              <div><p class="eyebrow">Persistent farm context</p><h2>Fields</h2><p class="section-subtitle compact-copy">Add your real fields once. The selected field is passed to Vayal as context.</p></div>
               <button id="btn-field-add" class="btn primary" type="button"><svg class="ui-icon"><use href="#i-plus"/></svg> Add field</button>
             </div>
             <div id="field-form" class="field-form hidden">
@@ -348,7 +348,7 @@
         <aside class="right-panel" aria-label="Farm snapshot">
           <article class="card right-rail-card">
             <div class="section-heading compact"><div><p class="eyebrow">Active field</p><h2>Context</h2></div></div>
-            <div id="active-field-context" class="context-card-empty">Add a field and mark it active. AgriGuide will use that profile when answering.</div>
+            <div id="active-field-context" class="context-card-empty">Add a field and mark it active. Vayal will use that profile when answering.</div>
           </article>
 
           <article class="card right-rail-card hero-snapshot">
@@ -359,7 +359,7 @@
 
           <article class="card right-rail-card">
             <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>Best next step</h2></div></div>
-            <ol class="workflow-mini"><li><span>1</span><div><strong>Set location</strong><small>Unlock weather and market context.</small></div></li><li><span>2</span><div><strong>Add your field</strong><small>Crop, area, soil, planting date.</small></div></li><li><span>3</span><div><strong>Ask the copilot</strong><small>Get a contextual recommendation.</small></div></li><li><span>4</span><div><strong>Record the action</strong><small>Journal, soil, finance, or calendar.</small></div></li></ol>
+            <ol class="workflow-mini"><li><span>1</span><div><strong>Set location</strong><small>Unlock weather and market context.</small></div></li><li><span>2</span><div><strong>Add your field</strong><small>Crop, area, soil, planting date.</small></div></li><li><span>3</span><div><strong>Ask Vayal</strong><small>Get a contextual recommendation.</small></div></li><li><span>4</span><div><strong>Record the action</strong><small>Journal, soil, finance, or calendar.</small></div></li></ol>
           </article>
 
           <article class="card right-rail-card">
@@ -373,7 +373,7 @@
 
   <dialog id="settings-dialog">
     <form method="dialog">
-      <div class="settings-dialog-head"><div><p class="eyebrow">Preferences</p><h3>AgriGuide settings</h3></div><button class="icon-btn dialog-close" value="cancel" aria-label="Close">×</button></div>
+      <div class="settings-dialog-head"><div><p class="eyebrow">Preferences</p><h3>Vayal settings</h3></div><button class="icon-btn dialog-close" value="cancel" aria-label="Close">×</button></div>
       <label>Language<select id="settings-lang"></select></label>
       <div class="settings-list"><label><span><strong>Dark mode</strong><small>Use a darker interface.</small></span><input id="toggle-dark" type="checkbox" /></label></div>
       <div class="settings-security-note"><strong>AI provider key</strong><p>Keep API keys only in <code>backend/.env</code>. Never put secrets in frontend files or Git.</p></div>

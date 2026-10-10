@@ -61,7 +61,7 @@ async def reverse_geocode(lat: float, lon: float) -> dict | None:
         "zoom": 3,
     }
     try:
-        async with httpx.AsyncClient(timeout=15.0, headers={"User-Agent": "AgriGuide/0.2"}) as client:
+        async with httpx.AsyncClient(timeout=15.0, headers={"User-Agent": "Vayal/0.2"}) as client:
             response = await client.get(NOMINATIM_URL, params=params)
             response.raise_for_status()
             data = response.json()

@@ -1800,7 +1800,7 @@ p { margin: 0; }
 }
 
 .chat:empty::after {
-  content: 'Start a conversation with your AI assistant';
+  content: 'Start a conversation with Vayal';
   color: var(--text-muted);
   font-size: 0.9rem;
 }

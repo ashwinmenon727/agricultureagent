@@ -1,5 +1,5 @@
 {
-  "appName": "AgriGuide",
+  "appName": "Vayal",
   "tagline": "ஆசியாவுக்கான AI விவசாய உ assistant",
   "selectLanguage": "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்",
   "continue": "தொடரவும்",
@@ -11,7 +11,7 @@
   "voiceOut": "சத்தமாக படிக்க",
   "send": "அனுப்பு",
   "placeholder": "பயிர், வானிலை, பூச்சி, மண் பற்றி கேளுங்கள்...",
-  "welcomeTitle": "AgriGuide-க்கு வரவேற்கிறோம்",
+  "welcomeTitle": "Vayal-க்கு வரவேற்கிறோம்",
   "welcomeBody": "உங்கள் மொழியில் கேளுங்கள். English + local mix pannalam.",
   "topics": {
     "weather": "வானிலை & பாசனம்",

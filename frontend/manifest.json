@@ -1,6 +1,6 @@
 {
-  "name": "AgriGuide — Farm Intelligence",
-  "short_name": "AgriGuide",
+  "name": "Vayal — Farm Intelligence",
+  "short_name": "Vayal",
   "description": "AI-assisted farm intelligence for weather, crop health, soil, planning, finance, and field operations.",
   "start_url": "/",
   "scope": "/",

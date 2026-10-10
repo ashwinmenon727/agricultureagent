@@ -1,10 +1,10 @@
-# AgriGuide — AI Farm Intelligence
+# Vayal — AI Farm Intelligence
 
-AgriGuide is a local-first agricultural decision-support dashboard with an AI farm copilot. The redesigned interface brings farm profiles, live weather, crop-health signals, seasonal planning, soil records, market information, finance, and the farm journal into one responsive workspace.
+Vayal is a local-first agricultural decision-support dashboard with an agricultural AI bot. The redesigned interface brings farm profiles, live weather, crop-health signals, seasonal planning, soil records, market information, finance, and the farm journal into one responsive workspace.
 
 ## What is included
 
-- **AI farm copilot** with Simple and Expert response modes
+- **Vayal bot** with Simple and Expert response modes
 - **Persistent field profiles** so chat can use the active crop, area, soil, planting date, and irrigation method
 - **Live weather + agricultural alerts** using Open-Meteo
 - **Crop-health signal** derived from current/forecast weather
@@ -70,7 +70,7 @@ See [`WORKFLOW.md`](WORKFLOW.md) for the complete user and technical workflow.
 
 ## Data and decision boundaries
 
-AgriGuide distinguishes live data, reference data, local records, and AI-generated explanations. Weather and market information can fail or become stale; the interface exposes source/failure states instead of silently inventing values. Soil amendment guidance is broad reference information and should be checked against a laboratory soil test, product label, crop requirement, and qualified local agronomy guidance before application.
+Vayal distinguishes live data, reference data, local records, and AI-generated explanations. Weather and market information can fail or become stale; the interface exposes source/failure states instead of silently inventing values. Soil amendment guidance is broad reference information and should be checked against a laboratory soil test, product label, crop requirement, and qualified local agronomy guidance before application.
 
 ## Project structure
 

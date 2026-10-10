@@ -8,7 +8,7 @@ LOCALES_DIR = Path(__file__).resolve().parent.parent.parent / "frontend" / "loca
 # Each entry: full UI translation dict
 TRANSLATIONS = {
     "en": {
-        "appName": "AgriGuide",
+        "appName": "Vayal",
         "tagline": "Real-time farming assistant for Asia",
         "selectLanguage": "Choose your language",
         "continue": "Continue",
@@ -20,7 +20,7 @@ TRANSLATIONS = {
         "voiceOut": "Read aloud",
         "send": "Send",
         "placeholder": "Ask about weather, rain, prices, pests, soil...",
-        "welcomeTitle": "Welcome to AgriGuide",
+        "welcomeTitle": "Welcome to Vayal",
         "welcomeBody": "Set your location for live weather, rain forecast, disaster alerts, and crop/fertilizer/pesticide rates across Asia.",
         "topics": {
             "weather": "Live weather",
@@ -51,7 +51,7 @@ TRANSLATIONS = {
         "locationRequired": "Set location to see live weather and alerts",
     },
     "hi": {
-        "appName": "AgriGuide",
+        "appName": "Vayal",
         "tagline": "एशिया के लिए real-time कृषि सहायक",
         "selectLanguage": "अपनी भाषा चुनें",
         "continue": "आगे बढ़ें",
@@ -63,7 +63,7 @@ TRANSLATIONS = {
         "voiceOut": "पढ़कर सुनाएं",
         "send": "भेजें",
         "placeholder": "मौसम, बारिश, दाम, कीट, मिट्टी पूछें...",
-        "welcomeTitle": "AgriGuide में स्वागत है",
+        "welcomeTitle": "Vayal में स्वागत है",
         "welcomeBody": "live मौसम, बारिश पूर्वानुमान, आपदा चेतावनी और फसल/उर्वरक/कीटनाशक दरों के लिए स्थान सेट करें।",
         "topics": {
             "weather": "Live मौसम",
@@ -94,7 +94,7 @@ TRANSLATIONS = {
         "locationRequired": "live मौसम के लिए स्थान सेट करें",
     },
     "bn": {
-        "appName": "AgriGuide",
+        "appName": "Vayal",
         "tagline": "এশিয়ার জন্য real-time কৃষি সহায়ক",
         "selectLanguage": "আপনার ভাষা বেছে নিন",
         "continue": "এগিয়ে যান",
@@ -106,7 +106,7 @@ TRANSLATIONS = {
         "voiceOut": "জোরে পড়ুন",
         "send": "পাঠান",
         "placeholder": "আবহাওয়া, বৃষ্টি, দাম, পোকা জিজ্ঞাসা করুন...",
-        "welcomeTitle": "AgriGuide-এ স্বাগতম",
+        "welcomeTitle": "Vayal-এ স্বাগতম",
         "welcomeBody": "live weather, বৃষ্টি, disaster alert ও crop/fertilizer/pesticide rate-এর জন্য location সেট করুন।",
         "topics": {"weather": "Live weather", "pest": "পোকা ও রোগ", "fertilizer": "সার দাম", "market": "ফসল দাম"},
         "offlineBanner": "অফলাইন",
@@ -132,7 +132,7 @@ TRANSLATIONS = {
         "locationRequired": "live weather-এর জন্য location সেট করুন",
     },
     "ta": {
-        "appName": "AgriGuide",
+        "appName": "Vayal",
         "tagline": "ஆசியாவுக்கான real-time விவசாய assistant",
         "selectLanguage": "மொழியைத் தேர்ந்தெடுக்கவும்",
         "continue": "தொடரவும்",
@@ -144,7 +144,7 @@ TRANSLATIONS = {
         "voiceOut": "சத்தமாக படிக்க",
         "send": "அனுப்பு",
         "placeholder": "வானிலை, மழை, விலை, பூச்சி கேளுங்கள்...",
-        "welcomeTitle": "AgriGuide வரவேற்பு",
+        "welcomeTitle": "Vayal வரவேற்பு",
         "welcomeBody": "live weather, rain forecast, alerts, crop/fertilizer/pesticide rates-kku location set pannunga.",
         "topics": {"weather": "Live weather", "pest": "பூச்சி", "fertilizer": "உர விலை", "market": "crop price"},
         "offlineBanner": "Offline",
@@ -170,7 +170,7 @@ TRANSLATIONS = {
         "locationRequired": "Set location for live weather",
     },
     "zh": {
-        "appName": "AgriGuide",
+        "appName": "Vayal",
         "tagline": "亚洲实时农业助手",
         "selectLanguage": "选择语言",
         "continue": "继续",
@@ -182,7 +182,7 @@ TRANSLATIONS = {
         "voiceOut": "朗读",
         "send": "发送",
         "placeholder": "询问天气、降雨、价格、害虫...",
-        "welcomeTitle": "欢迎使用 AgriGuide",
+        "welcomeTitle": "欢迎使用 Vayal",
         "welcomeBody": "设置位置以获取实时天气、降雨预报、灾害警报及作物/肥料/农药价格。",
         "topics": {"weather": "实时天气", "pest": "病虫害", "fertilizer": "肥料价格", "market": "作物价格"},
         "offlineBanner": "离线模式",

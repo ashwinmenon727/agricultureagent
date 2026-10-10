@@ -1,9 +1,9 @@
-# AgriGuide Workflow
+# Vayal Workflow
 
 ## 1. Farmer workflow
 
 ```text
-Open AgriGuide
+Open Vayal
       │
       ▼
 Choose language
@@ -21,7 +21,7 @@ Mark one field ACTIVE
       ├───────────────► Overview: crop-health + weather + alerts
       │
       ▼
-Ask the AI farm copilot
+Ask Vayal
       │
       ├─ Simple mode: short operational explanation
       └─ Expert mode: more detail, assumptions, and context
@@ -101,7 +101,7 @@ Frontend renders reply + data-source label
 
 ## 4. Failure workflow
 
-AgriGuide is designed to degrade rather than collapse. If **weather fails**, market/other modules still render. If **market fails**, weather still renders. If **AI fails**, relevant local FAQ or live context is returned when possible. If the browser is **offline or Low Data is enabled**, chat avoids external AI/weather/market calls and uses local knowledge. Empty forms are validated so blank soil or finance records are not stored.
+Vayal is designed to degrade rather than collapse. If **weather fails**, market/other modules still render. If **market fails**, weather still renders. If **AI fails**, relevant local FAQ or live context is returned when possible. If the browser is **offline or Low Data is enabled**, chat avoids external AI/weather/market calls and uses local knowledge. Empty forms are validated so blank soil or finance records are not stored.
 
 ## 5. Commercialization workflow
 

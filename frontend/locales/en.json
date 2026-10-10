@@ -1,6 +1,6 @@
 {
-  "appName": "AgriGuide",
-  "tagline": "Your AI farming assistant for Asia",
+  "appName": "Vayal",
+  "tagline": "Vayal, your farming assistant for Asia",
   "selectLanguage": "Choose your language",
   "continue": "Continue",
   "changeLanguage": "Language",
@@ -11,7 +11,7 @@
   "voiceOut": "Read aloud",
   "send": "Send",
   "placeholder": "Ask about crops, weather, pests, soil...",
-  "welcomeTitle": "Welcome to AgriGuide",
+  "welcomeTitle": "Welcome to Vayal",
   "welcomeBody": "Ask in your language. You can mix English with local words.",
   "topics": {
     "weather": "Weather & irrigation",

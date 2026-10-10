@@ -1,4 +1,4 @@
-"""Fast, no-network smoke tests for AgriGuide.
+"""Fast, no-network smoke tests for Vayal.
 
 Run from the project root after installing backend requirements:
     python scripts/smoke_test.py
@@ -39,7 +39,7 @@ def main() -> None:
     expect(res.status_code == 200 and isinstance(res.json(), list), "FAQ endpoint failed")
 
     res = client.get("/")
-    expect(res.status_code == 200 and "AgriGuide" in res.text, "frontend mount failed")
+    expect(res.status_code == 200 and "Vayal" in res.text, "frontend mount failed")
 
     res = client.post(
         "/api/chat",
@@ -61,7 +61,7 @@ def main() -> None:
     res = client.post("/api/chat", json={"message": "hello", "mode": "anything"})
     expect(res.status_code == 422, "chat mode validation failed")
 
-    print("AgriGuide smoke tests: PASS")
+    print("Vayal smoke tests: PASS")
 
 
 if __name__ == "__main__":

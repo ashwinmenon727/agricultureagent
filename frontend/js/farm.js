@@ -170,7 +170,7 @@ function updateActiveFieldUi() {
     if (topbarEl) topbarEl.textContent = "All fields";
     if (contextEl) {
       contextEl.className = "context-card-empty";
-      contextEl.textContent = "Add a field and mark it active. AgriGuide will use that profile when answering.";
+      contextEl.textContent = "Add a field and mark it active. Vayal will use that profile when answering.";
     }
     return;
   }

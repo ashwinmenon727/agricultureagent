@@ -1,5 +1,5 @@
 {
-  "appName": "AgriGuide",
+  "appName": "Vayal",
   "tagline": "面向亚洲的 AI 农业助手",
   "selectLanguage": "选择您的语言",
   "continue": "继续",
@@ -11,7 +11,7 @@
   "voiceOut": "朗读",
   "send": "发送",
   "placeholder": "询问作物、天气、害虫、土壤...",
-  "welcomeTitle": "欢迎使用 AgriGuide",
+  "welcomeTitle": "欢迎使用 Vayal",
   "welcomeBody": "请用您的语言提问。可以中英文混用。",
   "topics": {
     "weather": "天气与灌溉",

@@ -1,5 +1,5 @@
 {
-  "appName": "AgriGuide",
+  "appName": "Vayal",
   "tagline": "तुमच्या भाषेत शेती सहाय्यक",
   "selectLanguage": "तुमची भाषा निवडा",
   "continue": "सुरू ठेवा",
@@ -11,7 +11,7 @@
   "voiceOut": "वाचा",
   "send": "पाठवा",
   "placeholder": "पिके, हवामान, कीटक, माती बद्दल विचारा...",
-  "welcomeTitle": "AgriGuide मध्ये स्वागत आहे",
+  "welcomeTitle": "Vayal मध्ये स्वागत आहे",
   "welcomeBody": "तुमच्या भाषेत विचारा. तुम्ही इंग्रजी आणि स्थानिक शब्दांचे मिश्रण करू शकता.",
   "topics": {
     "weather": "हवामान व सिंचन",

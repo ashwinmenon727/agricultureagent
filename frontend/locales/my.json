@@ -1,5 +1,5 @@
 {
-  "appName": "AgriGuide",
+  "appName": "Vayal",
   "tagline": "အာရှအတွက် real-time စိုက်ပျိုးရေး assistant",
   "selectLanguage": "Choose your language",
   "continue": "Continue",
@@ -11,7 +11,7 @@
   "voiceOut": "Read aloud",
   "send": "Send",
   "placeholder": "Ask about weather, rain, prices, pests, soil...",
-  "welcomeTitle": "Welcome to AgriGuide",
+  "welcomeTitle": "Welcome to Vayal",
   "welcomeBody": "Set your location for live weather, rain forecast, disaster alerts, and crop/fertilizer/pesticide rates across Asia.",
   "topics": {
     "weather": "Live weather",

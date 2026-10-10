@@ -1,4 +1,4 @@
-# SOLUTION 2 – Server‑Setup Options for the Unified AgriGuide Dashboard
+# SOLUTION 2 – Server‑Setup Options for the Unified Vayal Dashboard
 
 Both the old URL `http://127.0.0.1:8000/` and the new URL 
 `http://127.0.0.1:8000/agri_guide_dashboard.html` should serve the **same** HTML file.

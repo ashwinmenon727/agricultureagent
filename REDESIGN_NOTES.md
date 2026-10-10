@@ -1,4 +1,4 @@
-# AgriGuide Redesign Notes
+# Vayal Redesign Notes
 
 This build replaces the old hard-coded dashboard prototype with one integrated farm-intelligence workspace.
 

@@ -94,7 +94,7 @@ function renderOverview(weather, health) {
   const irrigation = health?.irrigation || weather?.irrigation_advice;
   const alerts = health?.alerts || weather?.alerts || [];
   let action = "Ready";
-  let note = "Ask the AI copilot";
+  let note = "Ask Vayal";
   if (alerts.length) {
     action = alerts[0].level === "severe" ? "Urgent review" : "Review alert";
     note = alerts[0].title || alerts[0].message || "Weather risk detected";

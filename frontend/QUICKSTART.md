@@ -1,4 +1,4 @@
-# QUICKSTART – Get the Unified AgriGuide Dashboard Running in 5 minutes
+# QUICKSTART – Get the Unified Vayal Dashboard Running in 5 minutes
 
 ## 📦 What you need
 - The **`index.html`** file (provided above)  

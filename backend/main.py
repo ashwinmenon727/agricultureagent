@@ -28,7 +28,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 FRONTEND = ROOT / "frontend"
 DATA = BACKEND_DIR / "data"
 
-app = FastAPI(title="AgriGuide API", version="0.2.0")
+app = FastAPI(title="Vayal API", version="0.2.0")
 
 cors_origins = [
     origin.strip()
