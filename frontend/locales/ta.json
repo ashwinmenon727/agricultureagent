@@ -1,0 +1,27 @@
+{
+  "appName": "AgriGuide",
+  "tagline": "ஆசியாவுக்கான AI விவசாய உ assistant",
+  "selectLanguage": "உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்",
+  "continue": "தொடரவும்",
+  "changeLanguage": "மொழி",
+  "simpleMode": "எளிய",
+  "expertMode": "ந experts",
+  "lowDataMode": "குறைந்த data",
+  "voiceIn": "பேசுங்கள்",
+  "voiceOut": "சத்தமாக படிக்க",
+  "send": "அனுப்பு",
+  "placeholder": "பயிர், வானிலை, பூச்சி, மண் பற்றி கேளுங்கள்...",
+  "welcomeTitle": "AgriGuide-க்கு வரவேற்கிறோம்",
+  "welcomeBody": "உங்கள் மொழியில் கேளுங்கள். English + local mix pannalam.",
+  "topics": {
+    "weather": "வானிலை & பாசனம்",
+    "pest": "பூச்சி & நோய்",
+    "fertilizer": "உரம்",
+    "market": "சந்தை & திட்டம்"
+  },
+  "offlineBanner": "Offline — saved answers",
+  "listening": "கேட்கிறது...",
+  "thinking": "யோசிக்கிறது...",
+  "errorNetwork": "Server reach aagala. Offline answers try pannrom.",
+  "settings": "அமைப்புகள்"
+}

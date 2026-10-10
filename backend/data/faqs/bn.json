@@ -1,0 +1,32 @@
+[
+  {
+    "id": "irrigation_rain",
+    "keywords": ["sech", "pani", "brisht", "monsoon", "jal"],
+    "answer": "সেচের আগে ৫–৭ সে.মি. গভীরে মাটির আর্দ্রতা দেখুন। ২৪–৪৮ ঘণ্টায় বৃষ্টির সম্ভাবনা থাকলে সেচ পিছিয়ে দিন। ধানে kalam পর্যন্ত হালকা জল; ফসল তোলার আগে কমান।"
+  },
+  {
+    "id": "rice_fertilizer",
+    "keywords": ["dhan", "chal", "rice", "sar", "ur"],
+    "answer": "ধান: রোপণে basal phosphorus, nitrogen ২–৩ ভাগে। মাটি পরীক্ষা অনুযায়ী মাত্রা নিন। মৌসুমের শেষে বেশি nitrogen এড়িয়ে চলুন।"
+  },
+  {
+    "id": "pest_general",
+    "keywords": ["poka", "pest", "keet", "ipm"],
+    "answer": "সমন্বিত pest management: সপ্তাহে দুবার ক্ষেত দেখুন, বেশি আক্রান্ত গাছ সরান, প্রথমে bio-pesticide। spray er age poka thik kore chinun."
+  },
+  {
+    "id": "wheat_sowing",
+    "keywords": ["gom", "wheat", "bij"],
+    "answer": "গম বপনের সময় আপনার অঞ্চল অনুযায়ী। certified bij, drainage bhalo rakhben."
+  },
+  {
+    "id": "weather_heat",
+    "keywords": ["garmi", "heat", "shukno", "weather"],
+    "answer": "গরমে: সকাল/সন্ধ্যায় সেচ, mulching, peak heat-e nitrogen kom din."
+  },
+  {
+    "id": "soil_test",
+    "keywords": ["mati", "soil", "ph"],
+    "answer": "২–৩ বছরে একবার মাটি পরীক্ষা। একাধিক জায়গা থেকে sample নিয়ে local lab-e pathan."
+  }
+]

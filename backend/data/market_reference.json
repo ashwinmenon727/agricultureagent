@@ -1,0 +1,118 @@
+{
+  "countries": {
+    "IN": {
+      "name": "India",
+      "currency": "INR",
+      "updated_at": "2026-06-01",
+      "note": "Reference mandi/MRP rates for Asia farmers. Set DATA_GOV_IN_API_KEY in .env for live India mandi prices from data.gov.in.",
+      "crops": [
+        { "item": "Rice (Paddy)", "price": 2200, "unit": "₹/quintal", "region": "National avg.", "trend": "stable" },
+        { "item": "Wheat", "price": 2425, "unit": "₹/quintal", "region": "MSP reference", "trend": "stable" },
+        { "item": "Maize", "price": 2090, "unit": "₹/quintal", "region": "National avg.", "trend": "up" },
+        { "item": "Cotton", "price": 6620, "unit": "₹/quintal", "region": "Market avg.", "trend": "down" },
+        { "item": "Soybean", "price": 4892, "unit": "₹/quintal", "region": "Madhya Pradesh", "trend": "stable" },
+        { "item": "Onion", "price": 1800, "unit": "₹/quintal", "region": "Maharashtra", "trend": "volatile" },
+        { "item": "Potato", "price": 1200, "unit": "₹/quintal", "region": "Uttar Pradesh", "trend": "stable" },
+        { "item": "Tomato", "price": 2500, "unit": "₹/quintal", "region": "Karnataka", "trend": "up" }
+      ],
+      "fertilizers": [
+        { "item": "Urea (46% N)", "price": 266, "unit": "₹/50 kg bag", "type": "subsidy" },
+        { "item": "DAP", "price": 1350, "unit": "₹/50 kg bag", "type": "subsidy" },
+        { "item": "MOP (Potash)", "price": 1700, "unit": "₹/50 kg bag", "type": "subsidy" },
+        { "item": "NPK 10:26:26", "price": 1470, "unit": "₹/50 kg bag", "type": "subsidy" }
+      ],
+      "pesticides": [
+        { "item": "Chlorpyrifos 20% EC", "price": 450, "unit": "₹/500 ml", "category": "insecticide" },
+        { "item": "Mancozeb 75% WP", "price": 320, "unit": "₹/500 g", "category": "fungicide" },
+        { "item": "Glyphosate 41% SL", "price": 380, "unit": "₹/1 L", "category": "herbicide" },
+        { "item": "Imidacloprid 17.8% SL", "price": 290, "unit": "₹/250 ml", "category": "insecticide" }
+      ]
+    },
+    "BD": {
+      "name": "Bangladesh",
+      "currency": "BDT",
+      "updated_at": "2026-06-01",
+      "note": "Reference wholesale rates — connect national API when available.",
+      "crops": [
+        { "item": "Rice (Miniket)", "price": 5200, "unit": "BDT/quintal", "region": "Dhaka", "trend": "stable" },
+        { "item": "Wheat", "price": 3800, "unit": "BDT/quintal", "region": "National", "trend": "stable" },
+        { "item": "Potato", "price": 2200, "unit": "BDT/quintal", "region": "Jessore", "trend": "down" }
+      ],
+      "fertilizers": [
+        { "item": "Urea", "price": 850, "unit": "BDT/50 kg", "type": "subsidy" },
+        { "item": "TSP", "price": 2200, "unit": "BDT/50 kg", "type": "retail" }
+      ],
+      "pesticides": [
+        { "item": "Carbofuran 3G", "price": 1200, "unit": "BDT/kg", "category": "insecticide" }
+      ]
+    },
+    "ID": {
+      "name": "Indonesia",
+      "currency": "IDR",
+      "updated_at": "2026-06-01",
+      "note": "Reference rates for major commodities.",
+      "crops": [
+        { "item": "Rice (Medium)", "price": 7200, "unit": "IDR/kg", "region": "Java", "trend": "stable" },
+        { "item": "Palm oil (FFB)", "price": 2100, "unit": "IDR/kg", "region": "Sumatra", "trend": "up" },
+        { "item": "Corn", "price": 5500, "unit": "IDR/kg", "region": "East Java", "trend": "stable" }
+      ],
+      "fertilizers": [
+        { "item": "Urea", "price": 185000, "unit": "IDR/50 kg", "type": "retail" },
+        { "item": "NPK Phonska", "price": 310000, "unit": "IDR/50 kg", "type": "retail" }
+      ],
+      "pesticides": [
+        { "item": "Abamectin 18 EC", "price": 85000, "unit": "IDR/100 ml", "category": "insecticide" }
+      ]
+    },
+    "CN": {
+      "name": "China",
+      "currency": "CNY",
+      "updated_at": "2026-06-01",
+      "note": "Reference rates — live feed via regional API can be added.",
+      "crops": [
+        { "item": "Rice", "price": 2.8, "unit": "CNY/kg", "region": "South China", "trend": "stable" },
+        { "item": "Wheat", "price": 2.5, "unit": "CNY/kg", "region": "North China", "trend": "stable" },
+        { "item": "Corn", "price": 2.3, "unit": "CNY/kg", "region": "Northeast", "trend": "down" }
+      ],
+      "fertilizers": [
+        { "item": "Urea", "price": 110, "unit": "CNY/50 kg", "type": "retail" },
+        { "item": "Compound NPK", "price": 180, "unit": "CNY/50 kg", "type": "retail" }
+      ],
+      "pesticides": [
+        { "item": "Glyphosate 41%", "price": 35, "unit": "CNY/L", "category": "herbicide" }
+      ]
+    },
+    "VN": {
+      "name": "Vietnam",
+      "currency": "VND",
+      "updated_at": "2026-06-01",
+      "note": "Reference wholesale rates.",
+      "crops": [
+        { "item": "Rice (5% broken)", "price": 9500, "unit": "VND/kg", "region": "Mekong Delta", "trend": "stable" },
+        { "item": "Coffee (Robusta)", "price": 52000, "unit": "VND/kg", "region": "Central Highlands", "trend": "up" }
+      ],
+      "fertilizers": [
+        { "item": "Urea", "price": 11500, "unit": "VND/kg", "type": "retail" }
+      ],
+      "pesticides": [
+        { "item": "Chlorpyrifos", "price": 180000, "unit": "VND/L", "category": "insecticide" }
+      ]
+    },
+    "TH": {
+      "name": "Thailand",
+      "currency": "THB",
+      "updated_at": "2026-06-01",
+      "note": "Reference rates for key crops.",
+      "crops": [
+        { "item": "Rice (Hom Mali)", "price": 18500, "unit": "THB/ton", "region": "Northeast", "trend": "stable" },
+        { "item": "Rubber (RSS3)", "price": 62, "unit": "THB/kg", "region": "South", "trend": "up" }
+      ],
+      "fertilizers": [
+        { "item": "Urea", "price": 620, "unit": "THB/50 kg", "type": "retail" }
+      ],
+      "pesticides": [
+        { "item": "Abamectin", "price": 450, "unit": "THB/100 ml", "category": "insecticide" }
+      ]
+    }
+  }
+}

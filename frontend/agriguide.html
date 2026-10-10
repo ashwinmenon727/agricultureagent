@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriGuide | Farm Intelligence Platform</title>
+  <style>
+    /* ─── Design Tokens ───────────────────────────────────────────── */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+      /* Surfaces */
+      --surface-0: #f5f5f4;
+      --surface-1: #ffffff;
+      --surface-2: #fafaf9;
+
+      /* Text */
+      --text-primary:   #1c1917;
+      --text-secondary: #57534e;
+      --text-muted:     #a8a29e;
+      --text-accent:    #2563eb;
+
+      /* Borders */
+      --border:         rgba(0,0,0,0.08);
+      --border-strong:  rgba(0,0,0,0.16);
+      --border-stronger:rgba(0,0,0,0.24);
+
+      /* Fills */
+      --fill-accent:   #378ADD;
+      --fill-success:  #639922;
+
+      /* On-colors */
+      --on-accent:  #ffffff;
+      --on-success: #ffffff;
+
+      /* Tints */
+      --bg-accent-muted: #eff6ff;
+
+      /* Misc */
+      --radius: 8px;
+      --header-h: 56px;
+      --sidebar-w: 240px;
+      --right-w: 280px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-0: #0c0a09;
+        --surface-1: #1c1917;
+        --surface-2: #292524;
+
+        --text-primary:   #fafaf9;
+        --text-secondary: #a8a29e;
+        --text-muted:     #57534e;
+        --text-accent:    #60a5fa;
+
+        --border:         rgba(255,255,255,0.08);
+        --border-strong:  rgba(255,255,255,0.16);
+        --border-stronger:rgba(255,255,255,0.24);
+
+        --fill-accent:   #3b82f6;
+        --fill-success:  #7ab93b;
+
+        --bg-accent-muted: #1e3a5f;
+      }
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--surface-0);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button { cursor: pointer; border: none; outline: none; font: inherit; }
+    input  { outline: none; font: inherit; }
+
+    /* ─── App Shell ───────────────────────────────────────────────── */
+    .app {
+      display: grid;
+      grid-template-rows: var(--header-h) 1fr;
+      grid-template-columns: var(--sidebar-w) 1fr var(--right-w);
+      grid-template-areas:
+        "header header header"
+        "sidebar main right";
+      height: 100vh;
+    }
+
+    /* ─── Header ──────────────────────────────────────────────────── */
+    .header {
+      grid-area: header;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      background: var(--surface-1);
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius);
+      background: var(--fill-success);
+      color: var(--on-success);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .header-brand-text h1 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .header-brand-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .weather-widget {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 5px 10px;
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .location-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .notif-btn {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 50%;
+      font-size: 15px;
+      color: var(--text-secondary);
+      transition: background 0.15s;
+    }
+
+    .notif-btn:hover { background: var(--surface-0); }
+
+    .notif-dot {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      border: 1.5px solid var(--surface-1);
+      font-size: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 500;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--fill-accent);
+      color: var(--on-accent);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* ─── Sidebar ──────────────────────────────────────────────────── */
+    .sidebar {
+      grid-area: sidebar;
+      background: var(--surface-1);
+      border-right: 0.5px solid var(--border);
+      overflow-y: auto;
+      padding: 1.25rem 0;
+    }
+
+    .nav-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-section-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 0 12px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border-radius: 0;
+      user-select: none;
+    }
+
+    .nav-item:hover {
+      background: var(--surface-2);
+    }
+
+    .nav-item.active {
+      background: var(--bg-accent-muted);
+      color: var(--text-accent);
+    }
+
+    .nav-icon {
+      font-size: 16px;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* ─── Main / Center Panel ─────────────────────────────────────── */
+    .main {
+      grid-area: main;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-0);
+      overflow: hidden;
+    }
+
+    /* Chat section */
+    .chat-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(160deg, var(--surface-1) 0%, var(--surface-2) 100%);
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .agent-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    .agent-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--fill-success);
+      color: var(--on-success);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .agent-info h2 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .agent-status {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 3px;
+    }
+
+    .status-dot-inline {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--fill-success);
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    /* Chat container */
+    .chat-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+    .message {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.assistant {
+      background: var(--bg-accent-muted);
+      color: var(--text-primary);
+      align-self: flex-start;
+    }
+
+    .message.user {
+      background: var(--fill-accent);
+      color: var(--on-accent);
+      align-self: flex-end;
+    }
+
+    /* Chat input area */
+    .chat-input-area {
+      padding: 1rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      gap: 8px;
+      background: var(--surface-1);
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-1);
+      color: var(--text-primary);
+      font-size: 14px;
+      transition: border-color 0.15s;
+    }
+
+    .chat-input::placeholder { color: var(--text-muted); }
+    .chat-input:focus { border-color: var(--border-strong); }
+
+    .send-btn {
+      padding: 10px 16px;
+      background: var(--fill-accent);
+      color: var(--on-accent);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .send-btn:hover { opacity: 0.88; }
+
+    /* Quick actions */
+    .quick-actions {
+      padding: 1.5rem;
+      background: var(--surface-1);
+      border-top: 0.5px solid var(--border);
+    }
+
+    .quick-actions-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .quick-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .action-btn {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .action-btn:hover {
+      background: var(--surface-0);
+      border-color: var(--border-strong);
+    }
+
+    .action-icon { font-size: 20px; }
+
+    /* ─── Right Panel ──────────────────────────────────────────────── */
+    .right-panel {
+      grid-area: right;
+      background: var(--surface-1);
+      border-left: 0.5px solid var(--border);
+      overflow-y: auto;
+    }
+
+    .right-panel::-webkit-scrollbar { width: 4px; }
+    .right-panel::-webkit-scrollbar-track { background: transparent; }
+    .right-panel::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+    .panel-section {
+      padding: 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .panel-section-title {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Metric cards */
+    .metric-card {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .metric-card:last-child { margin-bottom: 0; }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .metric-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .metric-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--fill-success);
+      transition: width 0.6s ease;
+    }
+
+    /* Activity items */
+    .activity-item {
+      padding: 10px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .activity-item:last-child { border-bottom: none; }
+
+    .activity-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .activity-time {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Toggles */
+    .settings-card {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-size: 12px;
+    }
+
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+    }
+
+    .toggle-item:first-child { padding-top: 0; }
+    .toggle-item:last-child  { padding-bottom: 0; }
+
+    .toggle-label {
+      flex: 1;
+      color: var(--text-primary);
+      font-size: 13px;
+    }
+
+    .toggle {
+      width: 32px;
+      height: 20px;
+      background: var(--border-strong);
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .toggle.active { background: var(--fill-success); }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: left 0.15s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .toggle.active::after { left: 14px; }
+
+    /* ─── Message Animation ────────────────────────────────────────── */
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .message { animation: slideIn 0.3s ease both; }
+
+    /* ─── Typing Indicator ─────────────────────────────────────────── */
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--bg-accent-muted);
+      border-radius: var(--radius);
+      align-self: flex-start;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: typingBounce 1.2s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+    }
+
+    /* ─── Notification Panel ───────────────────────────────────────── */
+    .notif-panel {
+      position: fixed;
+      top: calc(var(--header-h) + 8px);
+      right: 1.25rem;
+      width: 300px;
+      background: var(--surface-1);
+      border: 0.5px solid var(--border-strong);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      z-index: 200;
+      overflow: hidden;
+      display: none;
+    }
+
+    .notif-panel.open { display: block; animation: slideIn 0.2s ease; }
+
+    .notif-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .notif-panel-header h3 { font-size: 14px; font-weight: 500; }
+
+    .notif-clear {
+      font-size: 12px;
+      color: var(--text-accent);
+      background: none;
+      cursor: pointer;
+    }
+
+    .notif-item {
+      padding: 12px 1rem;
+      border-bottom: 0.5px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .notif-item:last-child { border-bottom: none; }
+    .notif-item:hover { background: var(--surface-2); }
+
+    .notif-item p { font-size: 13px; color: var(--text-primary); margin-bottom: 2px; }
+    .notif-item span { font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ─── Header ────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">🌱</div>
+      <div class="header-brand-text">
+        <h1>AgriGuide</h1>
+        <span>Precision farm intelligence</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="weather-widget">☀️ 24°C &nbsp; Sunny</div>
+      <div class="location-badge">📍 John's Property</div>
+
+      <button class="notif-btn" id="notifBtn" aria-label="Notifications">
+        🔔
+        <span class="notif-dot" id="notifDot">3</span>
+      </button>
+
+      <div class="user-avatar" title="John">J</div>
+    </div>
+  </header>
+
+  <!-- Notification Panel -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-panel-header">
+      <h3>Notifications</h3>
+      <button class="notif-clear" id="notifClear">Clear all</button>
+    </div>
+    <div class="notif-item">
+      <p>🌧 Heavy rain expected tonight</p>
+      <span>Delay irrigation — 12mm forecast</span>
+    </div>
+    <div class="notif-item">
+      <p>📈 Rice price up +3.2%</p>
+      <span>Good time to consider selling stock</span>
+    </div>
+    <div class="notif-item">
+      <p>🌱 Top-dress nitrogen in 3 days</p>
+      <span>Wheat field B needs application</span>
+    </div>
+  </div>
+
+  <!-- ─── Left Sidebar ──────────────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <div class="nav-section">
+      <div class="nav-section-label">Farm</div>
+      <div class="nav-item active" data-section="dashboard">
+        <span class="nav-icon">🌾</span> Dashboard
+      </div>
+      <div class="nav-item" data-section="fields">
+        <span class="nav-icon">🗺️</span> Fields
+      </div>
+      <div class="nav-item" data-section="journal">
+        <span class="nav-icon">📒</span> Journal
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-label">Analysis</div>
+      <div class="nav-item" data-section="calendar">
+        <span class="nav-icon">📅</span> Crop Calendar
+      </div>
+      <div class="nav-item" data-section="soil">
+        <span class="nav-icon">🧪</span> Soil Health
+      </div>
+      <div class="nav-item" data-section="trends">
+        <span class="nav-icon">📊</span> Historical Trends
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" data-section="finance">
+        <span class="nav-icon">💰</span> Finance
+      </div>
+      <div class="nav-item" data-section="recommendations">
+        <span class="nav-icon">💡</span> Recommendations
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ─── Center Panel ──────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Chat Section -->
+    <div class="chat-section">
+
+      <!-- Agent Header -->
+      <div class="agent-header">
+        <div class="agent-avatar">🌿</div>
+        <div class="agent-info">
+          <h2>Farm Assistant</h2>
+          <div class="agent-status">
+            <span class="status-dot-inline"></span>
+            Connected and monitoring &nbsp;·&nbsp; Real-time insights from your fields
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="chat-container">
+
+        <div class="chat-messages" id="chatMessages">
+
+          <div class="message assistant">
+            Good morning, John. I've analyzed your North field this morning. Soil moisture is at 68% — optimal for your corn crop. Temperature is rising steadily.
+          </div>
+
+          <div class="message user">
+            Should I irrigate today?
+          </div>
+
+          <div class="message assistant">
+            Not urgently. With predicted rainfall of 12mm tonight, you can wait. I'll alert you if conditions shift by noon.
+          </div>
+
+        </div>
+
+        <div class="chat-input-area">
+          <input
+            class="chat-input"
+            id="chatInput"
+            type="text"
+            placeholder="Ask your Farm Assistant anything…"
+            autocomplete="off"
+          />
+          <button class="send-btn" id="sendBtn">Send</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <div class="quick-actions-label">Quick Actions</div>
+      <div class="quick-actions-grid">
+        <button class="action-btn" data-prompt="What should I know about weather and irrigation today?">
+          <span class="action-icon">🌦️</span>
+          <span>Weather &amp; Irrigation</span>
+        </button>
+        <button class="action-btn" data-prompt="Are there any pests or diseases I should watch for?">
+          <span class="action-icon">🐛</span>
+          <span>Pests &amp; Disease</span>
+        </button>
+        <button class="action-btn" data-prompt="What's my recommended fertilizer plan for this week?">
+          <span class="action-icon">🧪</span>
+          <span>Fertilizer Plan</span>
+        </button>
+        <button class="action-btn" data-prompt="What are today's crop market prices in my region?">
+          <span class="action-icon">📈</span>
+          <span>Market &amp; Planning</span>
+        </button>
+        <button class="action-btn" data-prompt="I want to analyze a photo of my crop for diagnosis.">
+          <span class="action-icon">📷</span>
+          <span>Analyze Photo</span>
+        </button>
+        <button class="action-btn" data-prompt="Show me all active alerts for my fields.">
+          <span class="action-icon">🔔</span>
+          <span>Review Alerts</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ─── Right Panel ───────────────────────────────────────────── -->
+  <aside class="right-panel">
+
+    <!-- Field Conditions -->
+    <div class="panel-section">
+      <div class="panel-section-title">Field Conditions</div>
+
+      <div class="metric-card">
+        <div class="metric-label">Soil Moisture</div>
+        <div class="metric-value">68%</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill" style="width: 68%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Temperature</div>
+        <div class="metric-value">24°C</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill" style="width: 48%; background: #f59e0b;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="panel-section">
+      <div class="panel-section-title">Recent Activity</div>
+
+      <div class="activity-item">
+        <div class="activity-label">Leaf photo analyzed</div>
+        <div class="activity-time">2 minutes ago · East Field</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-label">Moisture threshold reached</div>
+        <div class="activity-time">12 minutes ago · North Area</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-label">Spray window detected</div>
+        <div class="activity-time">36 minutes ago · All fields</div>
+      </div>
+    </div>
+
+    <!-- Quick Settings -->
+    <div class="panel-section">
+      <div class="panel-section-title">Quick Settings</div>
+
+      <div class="settings-card">
+        <div class="toggle-item">
+          <span class="toggle-label">Haptic alerts</span>
+          <div class="toggle active" id="toggle-haptic"></div>
+        </div>
+        <div class="toggle-item">
+          <span class="toggle-label">Voice control</span>
+          <div class="toggle active" id="toggle-voice"></div>
+        </div>
+        <div class="toggle-item">
+          <span class="toggle-label">Daily briefing</span>
+          <div class="toggle" id="toggle-briefing"></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<script>
+  /* ─── Smart AI Responses ────────────────────────────────────────── */
+  const responses = {
+    weather:     "Current forecast shows clear skies until 6 PM, then 12mm rainfall overnight. Wind speed is 14 km/h from the north-west. Ideal conditions for spraying this afternoon.",
+    irrigat:     "Your soil moisture is at 68% — within the optimal 60–80% range for corn. With tonight's rainfall expected at 12mm, irrigation can wait until tomorrow morning.",
+    pest:        "Pest pressure is currently low across all fields. However, aphid activity has increased in the East Field. I recommend a scouting check before Thursday.",
+    fertiliz:    "Based on your soil test from last week, North Field needs a top-dress of 30 kg/ha urea within the next 5 days. South Field is fully adequate until harvest.",
+    market:      "Today's prices: Rice ₹2,340/quintal (↑3.2%), Wheat ₹2,105/quintal (stable), Corn ₹1,870/quintal (↓0.8%). Rice prices favor selling this week.",
+    photo:       "I'm ready to analyze your crop photo. Please upload an image and I'll diagnose any visible nutrient deficiencies, pest damage, or disease signs.",
+    alert:       "You have 3 active alerts: (1) Rain forecast tonight — delay irrigation. (2) Aphid watch on East Field. (3) Nitrogen application due in 3 days on Wheat B.",
+    soil:        "North Field soil health: pH 6.4 (optimal), organic matter 3.1% (good), nitrogen 42 kg/ha (adequate). No corrective action needed this season.",
+    harvest:     "Based on crop age and weather patterns, your North corn field is 18–22 days from optimal harvest. I'll send a harvest readiness alert as you get closer.",
+    default:     "I'm analyzing your farm data right now. Could you give me a bit more detail so I can provide the most accurate recommendation for your fields?"
+  };
+
+  function getResponse(text) {
+    const t = text.toLowerCase();
+    if (t.includes("weather") || t.includes("rain") || t.includes("forecast")) return responses.weather;
+    if (t.includes("irrig"))        return responses.irrigat;
+    if (t.includes("pest") || t.includes("disease") || t.includes("aphid")) return responses.pest;
+    if (t.includes("fertiliz") || t.includes("nitrogen") || t.includes("nutrient")) return responses.fertiliz;
+    if (t.includes("market") || t.includes("price") || t.includes("sell")) return responses.market;
+    if (t.includes("photo") || t.includes("image") || t.includes("analyze")) return responses.photo;
+    if (t.includes("alert") || t.includes("notif")) return responses.alert;
+    if (t.includes("soil") || t.includes("ph") || t.includes("moisture")) return responses.soil;
+    if (t.includes("harvest") || t.includes("ready")) return responses.harvest;
+    return responses.default;
+  }
+
+  /* ─── Chat Logic ─────────────────────────────────────────────────── */
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput    = document.getElementById("chatInput");
+  const sendBtn      = document.getElementById("sendBtn");
+
+  function createMessage(text, role) {
+    const div = document.createElement("div");
+    div.className = `message ${role}`;
+    div.textContent = text;
+    return div;
+  }
+
+  function createTypingIndicator() {
+    const div = document.createElement("div");
+    div.className = "typing-indicator";
+    div.id = "typing";
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement("span");
+      dot.className = "typing-dot";
+      div.appendChild(dot);
+    }
+    return div;
+  }
+
+  function scrollToBottom() {
+    chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: "smooth" });
+  }
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    // Add user message
+    chatMessages.appendChild(createMessage(text, "user"));
+    chatInput.value = "";
+    scrollToBottom();
+
+    // Show typing indicator
+    const typing = createTypingIndicator();
+    chatMessages.appendChild(typing);
+    scrollToBottom();
+
+    // Add assistant response after delay
+    setTimeout(() => {
+      typing.remove();
+      chatMessages.appendChild(createMessage(getResponse(text), "assistant"));
+      scrollToBottom();
+    }, 600);
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+
+  /* Quick action buttons */
+  document.querySelectorAll(".action-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      chatInput.value = btn.dataset.prompt;
+      chatInput.focus();
+      sendMessage();
+    });
+  });
+
+  /* ─── Navigation ─────────────────────────────────────────────────── */
+  document.querySelectorAll(".nav-item").forEach(item => {
+    item.addEventListener("click", () => {
+      document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+    });
+  });
+
+  /* ─── Toggles ─────────────────────────────────────────────────────── */
+  document.querySelectorAll(".toggle").forEach(toggle => {
+    toggle.addEventListener("click", () => toggle.classList.toggle("active"));
+  });
+
+  /* ─── Notifications ──────────────────────────────────────────────── */
+  const notifBtn   = document.getElementById("notifBtn");
+  const notifPanel = document.getElementById("notifPanel");
+  const notifDot   = document.getElementById("notifDot");
+  const notifClear = document.getElementById("notifClear");
+
+  notifBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    notifPanel.classList.toggle("open");
+  });
+
+  notifClear.addEventListener("click", () => {
+    notifPanel.querySelectorAll(".notif-item").forEach(i => i.remove());
+    notifDot.style.display = "none";
+    notifPanel.classList.remove("open");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!notifPanel.contains(e.target) && e.target !== notifBtn) {
+      notifPanel.classList.remove("open");
+    }
+  });
+</script>
+</body>
+</html>

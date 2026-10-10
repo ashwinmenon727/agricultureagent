@@ -1,0 +1,27 @@
+{
+  "appName": "AgriGuide",
+  "tagline": "এশিয়ার জন্য আপনার AI কৃষি সহায়ক",
+  "selectLanguage": "আপনার ভাষা বেছে নিন",
+  "continue": "এগিয়ে যান",
+  "changeLanguage": "ভাষা",
+  "simpleMode": "সহজ",
+  "expertMode": "বিশেষজ্ঞ",
+  "lowDataMode": "কম ডেটা",
+  "voiceIn": "বলুন",
+  "voiceOut": "জোরে পড়ুন",
+  "send": "পাঠান",
+  "placeholder": "ফসল, আবহাওয়া, পোকা, মাটি সম্পর্কে জিজ্ঞাসা করুন...",
+  "welcomeTitle": "AgriGuide-এ স্বাগতম",
+  "welcomeBody": "আপনার ভাষায় জিজ্ঞাসা করুন। English আর local mix korte parben.",
+  "topics": {
+    "weather": "আবহাওয়া ও সেচ",
+    "pest": "পোকা ও রোগ",
+    "fertilizer": "সার",
+    "market": "বাজার ও পরিকল্পনা"
+  },
+  "offlineBanner": "অফলাইন — সংরক্ষিত উত্তর",
+  "listening": "শুনছে...",
+  "thinking": "ভাবছে...",
+  "errorNetwork": "সার্ভার পৌঁছাতে পারেনি। offline uttor dekhabe.",
+  "settings": "সেটিংস"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "irrigation_rain",
+    "keywords": ["pasanam", "neer", "mazhai", "monsoon", "irrigation"],
+    "answer": "பாசனத்திற்கு முன் 5–7 செ.மீ ஆழத்தில் மண் ஈரப்பதம் பார்க்கவும். 24–48 மணி மழை வாய்ப்பு இருந்தால் பாசனம் தள்ளுங்கள். நெல்லில் kalal varai lé niram; அறுவடைக்கு முன் குறைக்கவும்."
+  },
+  {
+    "id": "rice_fertilizer",
+    "keywords": ["nel", "arisi", "rice", "uram", "vali"],
+    "answer": "நெல்: நடவில் அ basal phosphorus, nitrogen 2–3 பங்காக tillering மற்றும் panicle samayam. மண் பரிசோதனை அடிப்படையில் dosage சிறந்தது."
+  },
+  {
+    "id": "pest_general",
+    "keywords": ["poochi", "pest", "keedam", "ipm"],
+    "answer": "தொகுப்பு பூச்சி மேலாண்மை: வாரம் இருமுறை களம் பாருங்கள், அதிக ப afflicted thaimai, bio-pesticides முதலில். spray seyum mun poochi identify pannunga."
+  },
+  {
+    "id": "wheat_sowing",
+    "keywords": ["godhumai", "wheat", "vithai"],
+    "answer": "கோதுமை நடவு நேரம் உங்கள் பகுதியைப் பொறுத்தது. சான்றளிக்கப்பட்ட விதை, சரியான seed rate, drainage nalla irukkanum."
+  },
+  {
+    "id": "weather_heat",
+    "keywords": ["veppam", "heat", "varsha", "weather"],
+    "answer": "வெப்பத்தில்: காலை/மாலை பாசனம், mulching, peak heat-la nitrogen avoid, nursery-kku shade."
+  },
+  {
+    "id": "soil_test",
+    "keywords": ["mann", "soil", "ph"],
+    "answer": "2–3 varusham oru murai mann parikshanam. pala idangalil sample eduthu mix panni local lab-kku anuppunga."
+  }
+]

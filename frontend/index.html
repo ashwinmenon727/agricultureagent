@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#163824" />
+  <meta name="description" content="AgriGuide — AI farm intelligence for weather, crop health, soil, planning, finance, and field operations." />
+  <title>AgriGuide — Farm Intelligence</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/css/style.css?v=4" />
+</head>
+<body>
+  <!-- Local SVG icon sprite: no CDN dependency, works offline. -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C13 3.5 7.5 6.5 5 12c-1.3 2.9-.7 5.8 1.3 7.5 2.1 1.8 5.4 1.7 7.8-.1 4.7-3.5 5.9-9.2 6.4-15.9Z"/><path d="M4 21c2.8-5.4 7.1-9.4 13.1-12"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></symbol>
+    <symbol id="i-fields" viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 11h18M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="i-soil" viewBox="0 0 24 24"><path d="M3 7c3 0 3 2 6 2s3-2 6-2 3 2 6 2"/><path d="M3 12c3 0 3 2 6 2s3-2 6-2 3 2 6 2"/><path d="M3 17c3 0 3 2 6 2s3-2 6-2 3 2 6 2"/></symbol>
+    <symbol id="i-market" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/><path d="m4 8 6-5 6 8 5-4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 6h15a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12"/><path d="M16 12h5v4h-5a2 2 0 1 1 0-4Z"/></symbol>
+    <symbol id="i-journal" viewBox="0 0 24 24"><path d="M5 3h14v18H5z"/><path d="M8 7h8M8 11h8M8 15h5M3 6h4M3 10h4M3 14h4M3 18h4"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M8 16h8"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5"/><path d="M19 11a8 8 0 1 0 1 5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.8 1.8 0 0 0 .4 2l.1.1-2.8 2.8-.1-.1a1.8 1.8 0 0 0-2-.4 1.8 1.8 0 0 0-1.1 1.7V21h-4v-.1A1.8 1.8 0 0 0 8.8 19a1.8 1.8 0 0 0-2 .4l-.1.1-2.8-2.8.1-.1a1.8 1.8 0 0 0 .4-2A1.8 1.8 0 0 0 2.7 13H2V9h.7a1.8 1.8 0 0 0 1.7-1.1 1.8 1.8 0 0 0-.4-2l-.1-.1L6.7 3l.1.1a1.8 1.8 0 0 0 2 .4A1.8 1.8 0 0 0 9.9 1.8V1h4v.8A1.8 1.8 0 0 0 15 3.5a1.8 1.8 0 0 0 2-.4l.1-.1 2.8 2.8-.1.1a1.8 1.8 0 0 0-.4 2A1.8 1.8 0 0 0 21.1 9h.9v4h-.9a1.8 1.8 0 0 0-1.7 2Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+    <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 2s7 7.2 7 13a7 7 0 0 1-14 0c0-5.8 7-13 7-13Z"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-9"/><path d="M15 6h6v6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-gps" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/><path d="M12 2V0M12 24v-2M2 12H0M24 12h-2"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></symbol>
+  </svg>
+
+  <!-- Language onboarding -->
+  <section id="lang-screen" class="screen language-screen active" aria-labelledby="language-title">
+    <div class="lang-card">
+      <div class="lang-brand-lockup">
+        <span class="brand-mark brand-mark-large"><svg class="ui-icon"><use href="#i-leaf"/></svg></span>
+        <div>
+          <p class="eyebrow">Farm intelligence platform</p>
+          <h1 id="language-title" data-i18n="appName">AgriGuide</h1>
+        </div>
+      </div>
+      <p class="subtitle" data-i18n="tagline">Your AI farming assistant for Asia</p>
+      <h2 data-i18n="selectLanguage">Choose your language</h2>
+      <div id="lang-grid" class="lang-grid" role="list"></div>
+      <button id="lang-continue" class="btn primary ripple-target" type="button" disabled>
+        <span data-i18n="continue">Continue</span>
+      </button>
+      <p class="onboarding-note">You can change language, AI mode, voice, and data settings at any time.</p>
+    </div>
+  </section>
+
+  <!-- Main application -->
+  <div id="app-screen" class="screen app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand-block">
+        <span class="brand-mark"><svg class="ui-icon"><use href="#i-leaf"/></svg></span>
+        <div>
+          <h3>AgriGuide</h3>
+          <small>Farm intelligence</small>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Farm workspace">
+        <button class="nav-item active" type="button" data-target="overview"><span class="icon"><svg class="ui-icon"><use href="#i-home"/></svg></span><span>Overview</span></button>
+        <button class="nav-item" type="button" data-target="assistant"><span class="icon"><svg class="ui-icon"><use href="#i-bot"/></svg></span><span>AI Copilot</span></button>
+        <button class="nav-item" type="button" data-target="fields"><span class="icon"><svg class="ui-icon"><use href="#i-fields"/></svg></span><span>Fields</span></button>
+        <button class="nav-item" type="button" data-target="calendar"><span class="icon"><svg class="ui-icon"><use href="#i-calendar"/></svg></span><span>Crop calendar</span></button>
+        <button class="nav-item" type="button" data-target="soil"><span class="icon"><svg class="ui-icon"><use href="#i-soil"/></svg></span><span>Soil health</span></button>
+        <button class="nav-item" type="button" data-target="market"><span class="icon"><svg class="ui-icon"><use href="#i-market"/></svg></span><span>Live intelligence</span></button>
+        <button class="nav-item" type="button" data-target="finance"><span class="icon"><svg class="ui-icon"><use href="#i-wallet"/></svg></span><span>Finance</span></button>
+        <button class="nav-item" type="button" data-target="journal"><span class="icon"><svg class="ui-icon"><use href="#i-journal"/></svg></span><span>Journal</span></button>
+      </nav>
+
+      <div class="sidebar-status-card" aria-label="Agent status">
+        <div class="agent-mini-row">
+          <div class="agent-avatar">
+            <div class="agent-avatar-ring"><svg class="ui-icon"><use href="#i-bot"/></svg></div>
+            <span class="agent-status-dot"></span>
+          </div>
+          <div class="agent-info">
+            <h4>Agri Copilot</h4>
+            <p><span class="status-indicator"></span> Ready</p>
+          </div>
+        </div>
+        <div id="agent-speech" class="speech-bubble">Set your farm location to activate live recommendations.</div>
+        <span class="sidebar-status-text" id="active-field-name">No active field selected</span>
+      </div>
+    </aside>
+
+    <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <main class="main-column">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu icon-btn" type="button" aria-label="Open navigation"><svg class="ui-icon"><use href="#i-menu"/></svg></button>
+          <div class="mobile-brand"><span class="brand-mark mini"><svg class="ui-icon"><use href="#i-leaf"/></svg></span><strong>AgriGuide</strong></div>
+          <div class="workspace-title">
+            <span class="workspace-label">Farm workspace</span>
+            <strong id="topbar-field-label">All fields</strong>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <div id="header-weather" class="weather-widget" aria-live="polite">
+            <span class="weather-icon" data-field="icon"><svg class="ui-icon"><use href="#i-sun"/></svg></span>
+            <span><span class="weather-temp" data-field="temp">--°C</span><span class="weather-desc" data-field="desc">Set location</span></span>
+          </div>
+          <button id="btn-refresh" class="icon-btn" type="button" aria-label="Refresh live data" title="Refresh live data"><svg class="ui-icon icon-hover-rotate"><use href="#i-refresh"/></svg></button>
+          <button id="btn-notifications" class="icon-btn notification-btn" type="button" aria-label="Notifications" title="Notifications"><svg class="ui-icon"><use href="#i-bell"/></svg><span class="badge">3</span></button>
+          <button id="btn-settings" class="icon-btn" type="button" aria-label="Settings" title="Settings"><svg class="ui-icon"><use href="#i-settings"/></svg></button>
+          <div class="profile-chip" aria-label="Farm profile"><span class="avatar">AG</span><span>My farm</span></div>
+        </div>
+
+        <div id="notifications-panel" class="notifications-panel hidden" role="dialog" aria-label="Notifications">
+          <div class="notif-header"><h4>Farm notifications</h4><button id="notif-clear" class="notif-clear-btn" type="button">Clear all</button></div>
+          <div id="notif-list" class="notif-list">
+            <div class="notif-item notif-weather"><span class="notif-icon"><svg class="ui-icon"><use href="#i-droplet"/></svg></span><div class="notif-content"><p class="notif-title">Weather monitoring active</p><p class="notif-desc">Choose a location to receive irrigation and severe-weather alerts.</p><small class="notif-time">Live when connected</small></div></div>
+            <div class="notif-item notif-market"><span class="notif-icon"><svg class="ui-icon"><use href="#i-market"/></svg></span><div class="notif-content"><p class="notif-title">Market intelligence ready</p><p class="notif-desc">Rates are loaded by country after location is selected.</p><small class="notif-time">On demand</small></div></div>
+            <div class="notif-item notif-calendar"><span class="notif-icon"><svg class="ui-icon"><use href="#i-calendar"/></svg></span><div class="notif-content"><p class="notif-title">Crop calendar available</p><p class="notif-desc">Use the crop calendar to review seasonal operations.</p><small class="notif-time">Offline capable</small></div></div>
+          </div>
+        </div>
+      </header>
+
+      <div id="offline-banner" class="offline-banner hidden" data-i18n="offlineBanner">Offline mode — using saved answers</div>
+
+      <section id="alert-bar" class="alert-bar hidden" aria-live="polite">
+        <button class="alert-toggle" type="button" aria-expanded="false">
+          <span class="alert-level" data-field="level">ALERT</span>
+          <span class="alert-msg" data-field="msg">Weather alert</span>
+          <span class="alert-time" data-field="time"></span>
+          <svg class="ui-icon alert-chevron"><use href="#i-chevron-down"/></svg>
+        </button>
+        <div class="alert-details" data-field="details"></div>
+      </section>
+
+      <div class="content-grid">
+        <div class="content-main">
+          <!-- OVERVIEW -->
+          <section id="overview" class="workspace-section">
+            <div class="page-heading-row">
+              <div>
+                <p class="eyebrow">Today on your farm</p>
+                <h1>Decide faster. Act with context.</h1>
+                <p class="section-subtitle">Live weather, crop-health signals, market context, records, and your AI copilot in one workflow.</p>
+              </div>
+              <span id="active-location" class="active-location"></span>
+            </div>
+
+            <div class="overview-kpis">
+              <article class="overview-kpi kpi-primary">
+                <span class="kpi-icon"><svg class="ui-icon"><use href="#i-leaf"/></svg></span>
+                <div><span class="kpi-label">Crop health</span><strong id="overview-health">--</strong><small id="overview-health-note">Waiting for live data</small></div>
+              </article>
+              <article class="overview-kpi">
+                <span class="kpi-icon"><svg class="ui-icon"><use href="#i-droplet"/></svg></span>
+                <div><span class="kpi-label">Soil moisture</span><strong id="overview-moisture">--</strong><small>Weather-derived estimate</small></div>
+              </article>
+              <article class="overview-kpi">
+                <span class="kpi-icon"><svg class="ui-icon"><use href="#i-sun"/></svg></span>
+                <div><span class="kpi-label">Temperature</span><strong id="overview-temp">--</strong><small id="overview-weather-note">Set a location</small></div>
+              </article>
+              <article class="overview-kpi">
+                <span class="kpi-icon"><svg class="ui-icon"><use href="#i-trend"/></svg></span>
+                <div><span class="kpi-label">Decision status</span><strong id="overview-action">Ready</strong><small id="overview-action-note">AI + live context</small></div>
+              </article>
+            </div>
+          </section>
+
+          <!-- AI COPILOT HERO -->
+          <section id="assistant" class="hero-agent-workspace" aria-labelledby="assistant-title">
+            <div class="agent-hero-header">
+              <div class="agent-hero-avatar-wrap"><div class="agent-avatar-hero"><svg class="ui-icon ui-icon-lg"><use href="#i-bot"/></svg></div><span class="status-pulse-ring"></span></div>
+              <div class="agent-hero-intro">
+                <div class="agent-badge-row"><span class="agent-pill-badge"><span class="live-status-dot"></span> AI farm copilot</span><span class="agent-pill-location" id="agent-location-label">Live context activates with location</span></div>
+                <h2 id="assistant-title" class="agent-hero-title">Ask one question. AgriGuide checks the context.</h2>
+                <p class="agent-hero-subtitle">Weather-aware answers, crop planning, pest and disease guidance, fertilizer reasoning, and market context — with offline fallbacks when connectivity is limited.</p>
+              </div>
+            </div>
+
+            <div class="agent-location-bar">
+              <div class="location-input-group">
+                <svg class="ui-icon search-icon"><use href="#i-search"/></svg>
+                <input id="location-search" type="search" placeholder="Search village, town, or farm area…" autocomplete="off" aria-label="Search farm location" />
+                <button id="btn-gps" class="btn agent-secondary-btn" type="button"><svg class="ui-icon"><use href="#i-gps"/></svg><span>Use GPS</span></button>
+              </div>
+              <div id="location-results" class="location-results hidden" role="listbox"></div>
+            </div>
+
+            <div id="chat" class="chat hero-chat-stream" aria-live="polite" aria-label="AgriGuide conversation"></div>
+
+            <div class="quick-topics" aria-label="Quick prompts">
+              <button class="topic-chip" type="button" data-prompt="Should I irrigate today based on the weather forecast?"><span class="topic-icon"><svg class="ui-icon"><use href="#i-droplet"/></svg></span> Irrigation decision</button>
+              <button class="topic-chip" type="button" data-prompt="What pest and disease risks should I scout for this week?"><span class="topic-icon"><svg class="ui-icon"><use href="#i-leaf"/></svg></span> Pest & disease</button>
+              <button class="topic-chip" type="button" data-prompt="Help me plan fertilizer application safely and efficiently."><span class="topic-icon"><svg class="ui-icon"><use href="#i-soil"/></svg></span> Fertilizer plan</button>
+              <button class="topic-chip" type="button" data-prompt="Show me the relevant market rates and how they may affect my planning."><span class="topic-icon"><svg class="ui-icon"><use href="#i-market"/></svg></span> Market planning</button>
+            </div>
+
+            <div class="composer hero-composer">
+              <div class="composer-tools">
+                <label class="toggle"><span data-i18n="simpleMode">Simple</span><input id="mode-toggle" type="checkbox" aria-label="Toggle expert mode" /><span data-i18n="expertMode">Expert</span></label>
+                <label class="toggle"><span data-i18n="lowDataMode">Low data</span><input id="low-data-toggle" type="checkbox" /></label>
+                <label class="toggle"><span data-i18n="voiceOut">Read aloud</span><input id="voice-out-toggle" type="checkbox" /></label>
+              </div>
+              <div class="input-row">
+                <button id="btn-voice-in" class="icon-btn voice-mic-btn" type="button" aria-label="Speak"><svg class="ui-icon"><use href="#i-mic"/></svg></button>
+                <textarea id="message-input" rows="1" maxlength="4000" data-i18n-placeholder="placeholder" placeholder="Ask about crops, weather, pests, soil…"></textarea>
+                <button id="btn-send" class="send-btn ripple-target" type="button" aria-label="Send message"><span data-i18n="send">Send</span><svg class="ui-icon"><use href="#i-send"/></svg></button>
+              </div>
+            </div>
+          </section>
+
+          <!-- CROP HEALTH -->
+          <section class="dashboard-row workspace-section" aria-label="Farm health overview">
+            <article class="card health-card">
+              <div class="section-heading"><div><p class="eyebrow">Live signal</p><h2>Crop health</h2></div><span class="confidence-pill">Weather-derived</span></div>
+              <div class="gauge-wrap">
+                <div id="crop-health-gauge" class="health-gauge" style="--score:0"><div><span class="gauge-icon"><svg class="ui-icon"><use href="#i-leaf"/></svg></span><strong data-field="score">--</strong></div></div>
+                <div class="health-legend"><span><i class="legend-dot poor"></i>Poor</span><span><i class="legend-dot fair"></i>Fair</span><span><i class="legend-dot good"></i>Good</span><span><i class="legend-dot excellent"></i>Excellent</span></div>
+              </div>
+              <div id="crop-metrics" class="metric-grid">
+                <div class="metric-tile" data-metric="soil-moisture"><span class="label">Soil moisture</span><strong class="value" data-field="value">--</strong><span class="sub" data-field="sub">Waiting for data</span></div>
+                <div class="metric-tile" data-metric="nutrients"><span class="label">Nutrient conditions</span><strong class="value" data-field="value">--</strong><span class="sub" data-field="sub">Estimated</span></div>
+                <div class="metric-tile" data-metric="pest-activity"><span class="label">Pest activity</span><strong class="value" data-field="value">--</strong><span class="sub" data-field="sub">Weather risk</span></div>
+                <div class="metric-tile" data-metric="disease-risk"><span class="label">Disease risk</span><strong class="value" data-field="value">--</strong><span class="sub" data-field="sub">1–10 scale</span></div>
+              </div>
+            </article>
+
+            <article class="card forecast-card">
+              <div class="section-heading"><div><p class="eyebrow">Operational planning</p><h2>7-day field window</h2></div></div>
+              <div id="forecast-strip" class="forecast-strip"><div class="forecast-day"><span class="day-label">Set location</span></div></div>
+              <p id="forecast-impact" class="impact-note">Select your farm location to see spray, irrigation, and heat-risk guidance.</p>
+            </article>
+          </section>
+
+          <!-- FIELDS -->
+          <section id="fields" class="card workspace-section">
+            <div class="section-heading">
+              <div><p class="eyebrow">Persistent farm context</p><h2>Fields</h2><p class="section-subtitle compact-copy">Add your real fields once. The selected field is passed to the AI copilot as context.</p></div>
+              <button id="btn-field-add" class="btn primary" type="button"><svg class="ui-icon"><use href="#i-plus"/></svg> Add field</button>
+            </div>
+            <div id="field-form" class="field-form hidden">
+              <div class="form-row">
+                <label class="form-field"><span>Field name *</span><input id="field-name" type="text" maxlength="80" placeholder="e.g. North plot" /></label>
+                <label class="form-field"><span>Crop *</span><input id="field-crop" type="text" maxlength="80" placeholder="e.g. Tomato" /></label>
+                <label class="form-field"><span>Area</span><input id="field-area" type="number" min="0" step="0.01" placeholder="2.5" /></label>
+                <label class="form-field"><span>Unit</span><select id="field-unit"><option value="acre">Acre</option><option value="hectare">Hectare</option><option value="cent">Cent</option></select></label>
+              </div>
+              <div class="form-row">
+                <label class="form-field"><span>Soil type</span><select id="field-soil"><option value="">Unknown</option><option value="loamy">Loamy</option><option value="clay">Clay</option><option value="sandy">Sandy</option><option value="black">Black soil</option><option value="red">Red soil</option><option value="alluvial">Alluvial</option></select></label>
+                <label class="form-field"><span>Sowing / planting date</span><input id="field-sowing-date" type="date" /></label>
+                <label class="form-field"><span>Irrigation</span><select id="field-irrigation"><option value="">Not specified</option><option value="drip">Drip</option><option value="sprinkler">Sprinkler</option><option value="furrow">Furrow</option><option value="flood">Flood</option><option value="rainfed">Rainfed</option></select></label>
+              </div>
+              <div class="form-actions"><button id="btn-field-save" class="btn primary" type="button">Save field</button><button id="btn-field-cancel" class="btn ghost" type="button">Cancel</button></div>
+            </div>
+            <div id="fields-list" class="fields-list"></div>
+          </section>
+
+          <!-- CALENDAR -->
+          <section id="calendar" class="card workspace-section">
+            <div class="section-heading"><div><p class="eyebrow">Seasonal operations</p><h2>Crop calendar</h2><p class="section-subtitle compact-copy">Calendar guidance is month-level seasonal planning, not an exact-date prescription. Adapt timing to your crop stage and local conditions.</p></div><div class="calendar-controls"><button id="btn-cal-prev" class="icon-btn" type="button" aria-label="Previous month">←</button><strong id="cal-month-label" class="cal-month-label"></strong><button id="btn-cal-next" class="icon-btn" type="button" aria-label="Next month">→</button></div></div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+            <div class="section-heading compact section-divider"><h3>Upcoming operations</h3></div>
+            <div id="calendar-tasks" class="calendar-tasks"></div>
+          </section>
+
+          <!-- SOIL -->
+          <section id="soil" class="card workspace-section">
+            <div class="section-heading"><div><p class="eyebrow">Test history</p><h2>Soil health</h2><p class="section-subtitle compact-copy">Store lab or field-test values locally and compare them against broad soil ranges.</p></div><button id="btn-soil-add" class="btn primary" type="button"><svg class="ui-icon"><use href="#i-plus"/></svg> Add test</button></div>
+            <div id="soil-form" class="soil-form hidden">
+              <div class="form-row">
+                <label class="form-field"><span>Date</span><input id="soil-date" type="date" /></label>
+                <label class="form-field"><span>Field</span><select id="soil-field"></select></label>
+                <label class="form-field"><span>Soil type</span><select id="soil-type"><option value="loamy">Loamy</option><option value="clay">Clay</option><option value="sandy">Sandy</option><option value="silty">Silty</option><option value="peaty">Peaty</option><option value="chalky">Chalky</option></select></label>
+              </div>
+              <div class="form-row">
+                <label class="form-field"><span>pH</span><input id="soil-ph" type="number" step="0.1" min="0" max="14" /></label>
+                <label class="form-field"><span>N (kg/ha)</span><input id="soil-n" type="number" min="0" /></label>
+                <label class="form-field"><span>P (kg/ha)</span><input id="soil-p" type="number" min="0" /></label>
+                <label class="form-field"><span>K (kg/ha)</span><input id="soil-k" type="number" min="0" /></label>
+                <label class="form-field"><span>Organic carbon %</span><input id="soil-oc" type="number" step="0.01" min="0" /></label>
+                <label class="form-field"><span>EC (dS/m)</span><input id="soil-ec" type="number" step="0.01" min="0" /></label>
+              </div>
+              <div class="form-actions"><button id="btn-soil-save" class="btn primary" type="button">Save test</button><button id="btn-soil-cancel" class="btn ghost" type="button">Cancel</button></div>
+            </div>
+            <div class="soil-dashboard">
+              <div><h3>NPK status</h3><div id="npk-bars" class="npk-bars"><p class="soil-empty">Add a soil test to see NPK status.</p></div></div>
+              <div><h3>pH</h3><div class="ph-display"><div class="ph-scale"><span class="ph-marker"></span></div><div class="ph-labels"><span>Acidic</span><span>Neutral</span><span>Alkaline</span></div><strong id="ph-value" class="ph-value">--</strong><p id="ph-advice" class="ph-advice">No soil test recorded.</p></div></div>
+            </div>
+            <div class="section-heading compact section-divider"><div><h3>Reference amendment guidance</h3><p class="section-subtitle compact-copy">Broad reference only. Verify application rates against a laboratory soil test, crop requirement, product label, and local agronomy guidance before applying inputs.</p></div></div><div id="soil-recs" class="soil-recs"></div>
+            <div class="section-heading compact section-divider"><h3>Test history</h3></div><div id="soil-history-list" class="soil-history-list"></div>
+          </section>
+
+          <!-- MARKET/LIVE -->
+          <section id="market" class="card workspace-section">
+            <div class="section-heading"><div><p class="eyebrow">Weather + market</p><h2>Live intelligence</h2><p class="section-subtitle compact-copy">Fetched for your selected location and country. Reference market data is clearly labelled when live data is unavailable.</p></div><button class="btn ghost prompt-action" type="button" data-prompt="Summarize the most important weather and market decisions for my farm today.">Ask AI to summarize</button></div>
+            <div id="live-panel" class="live-panel"><p class="live-hint">Select a location above to load weather and market intelligence.</p></div>
+          </section>
+
+          <!-- FINANCE -->
+          <section id="finance" class="card workspace-section">
+            <div class="section-heading"><div><p class="eyebrow">Farm economics</p><h2>Finance</h2><p class="section-subtitle compact-copy">Track seasonal costs, yield, revenue, and profit locally in your browser.</p></div><button id="btn-fin-add" class="btn primary" type="button"><svg class="ui-icon"><use href="#i-plus"/></svg> Add season</button></div>
+            <div id="fin-form" class="fin-form hidden">
+              <p class="form-section-title">Season details</p>
+              <div class="form-row">
+                <label class="form-field"><span>Season</span><select id="fin-season"><option value="kharif">Kharif</option><option value="rabi">Rabi</option><option value="zaid">Zaid</option><option value="annual">Annual</option></select></label>
+                <label class="form-field"><span>Year</span><input id="fin-year" type="number" min="2000" max="2100" /></label>
+                <label class="form-field"><span>Field</span><select id="fin-field"></select></label>
+                <label class="form-field"><span>Crop</span><input id="fin-crop" type="text" maxlength="80" placeholder="e.g. Tomato" /></label>
+                <label class="form-field"><span>Area (acre)</span><input id="fin-area" type="number" step="0.01" min="0" /></label>
+              </div>
+              <p class="form-section-title">Input costs (₹)</p>
+              <div class="form-row"><label class="form-field"><span>Seeds</span><input id="fin-seeds" type="number" min="0" /></label><label class="form-field"><span>Fertilizer</span><input id="fin-fertilizer" type="number" min="0" /></label><label class="form-field"><span>Pesticides</span><input id="fin-pesticides" type="number" min="0" /></label><label class="form-field"><span>Labor</span><input id="fin-labor" type="number" min="0" /></label><label class="form-field"><span>Irrigation</span><input id="fin-irrigation" type="number" min="0" /></label><label class="form-field"><span>Other</span><input id="fin-other-cost" type="number" min="0" /></label></div>
+              <p class="form-section-title">Outcome</p>
+              <div class="form-row"><label class="form-field"><span>Yield (quintal)</span><input id="fin-yield" type="number" step="0.01" min="0" /></label><label class="form-field"><span>Sale price (₹/quintal)</span><input id="fin-price" type="number" min="0" /></label></div>
+              <div class="form-actions"><button id="btn-fin-save" class="btn primary" type="button">Save record</button><button id="btn-fin-cancel" class="btn ghost" type="button">Cancel</button></div>
+            </div>
+            <div class="fin-dashboard">
+              <div class="fin-summary"><div class="fin-card"><span class="fin-card-label">Total cost</span><strong id="fin-total-cost" class="fin-card-value">₹0</strong></div><div class="fin-card"><span class="fin-card-label">Revenue</span><strong id="fin-total-revenue" class="fin-card-value">₹0</strong></div><div id="fin-profit-card" class="fin-card positive"><span class="fin-card-label">Profit / loss</span><strong id="fin-profit" class="fin-card-value">₹0</strong></div><div class="fin-card"><span class="fin-card-label">Cost / quintal</span><strong id="fin-cost-per-q" class="fin-card-value">₹0</strong></div></div>
+              <div class="fin-section"><h3>Cost breakdown</h3><div id="fin-cost-chart" class="fin-cost-chart"></div></div>
+              <div class="fin-section"><h3>Season records</h3><div id="fin-records" class="fin-records"></div></div>
+            </div>
+          </section>
+
+          <!-- JOURNAL -->
+          <section id="journal" class="card workspace-section">
+            <div class="section-heading"><div><p class="eyebrow">Operations log</p><h2>Farm journal</h2><p class="section-subtitle compact-copy">Record observations, irrigation, sprays, harvests, expenses, and supporting photos. Data stays in this browser.</p></div><div class="journal-actions"><button id="btn-journal-export" class="btn ghost" type="button"><svg class="ui-icon"><use href="#i-download"/></svg> Export CSV</button><button id="btn-journal-add" class="btn primary" type="button"><svg class="ui-icon"><use href="#i-plus"/></svg> New entry</button></div></div>
+            <div id="journal-form" class="journal-form hidden">
+              <div class="form-row"><label class="form-field"><span>Date *</span><input id="journal-date" type="date" /></label><label class="form-field"><span>Activity</span><select id="journal-type"><option value="observation">Observation</option><option value="planting">Planting</option><option value="fertilizer">Fertilizer</option><option value="spraying">Spraying</option><option value="irrigation">Irrigation</option><option value="harvest">Harvest</option><option value="expense">Expense</option><option value="other">Other</option></select></label><label class="form-field"><span>Field</span><select id="journal-field"></select></label><label class="form-field"><span>Cost (₹)</span><input id="journal-cost" type="number" min="0" /></label></div>
+              <label class="form-field"><span>Description *</span><textarea id="journal-desc" rows="3" maxlength="1000" placeholder="What happened, what did you observe, and what action was taken?"></textarea></label>
+              <label class="form-field"><span>Photos (up to 4)</span><input id="journal-photos" type="file" accept="image/*" multiple /></label>
+              <div class="form-actions"><button id="btn-journal-save" class="btn primary" type="button">Save entry</button><button id="btn-journal-cancel" class="btn ghost" type="button">Cancel</button></div>
+            </div>
+            <div id="journal-entries" class="journal-entries"></div>
+          </section>
+        </div>
+
+        <!-- Right rail -->
+        <aside class="right-panel" aria-label="Farm snapshot">
+          <article class="card right-rail-card">
+            <div class="section-heading compact"><div><p class="eyebrow">Active field</p><h2>Context</h2></div></div>
+            <div id="active-field-context" class="context-card-empty">Add a field and mark it active. AgriGuide will use that profile when answering.</div>
+          </article>
+
+          <article class="card right-rail-card hero-snapshot">
+            <div class="section-heading compact"><div><p class="eyebrow">Live snapshot</p><h2>Conditions</h2></div></div>
+            <div id="hero-crop-health" class="snapshot-block"><span class="snapshot-label">Crop health</span><strong data-field="value">--</strong><span data-field="status">Waiting for data</span><small data-field="updated"></small></div>
+            <div id="hero-weather-strip" class="weather-strip compact-weather"><div class="weather-item"><strong data-field="temp">--</strong><span>Temperature</span></div><div class="weather-item"><strong data-field="humidity">--%</strong><span>Humidity</span></div><div class="weather-item"><strong data-field="wind">--</strong><span>Wind km/h</span></div></div>
+          </article>
+
+          <article class="card right-rail-card">
+            <div class="section-heading compact"><div><p class="eyebrow">Workflow</p><h2>Best next step</h2></div></div>
+            <ol class="workflow-mini"><li><span>1</span><div><strong>Set location</strong><small>Unlock weather and market context.</small></div></li><li><span>2</span><div><strong>Add your field</strong><small>Crop, area, soil, planting date.</small></div></li><li><span>3</span><div><strong>Ask the copilot</strong><small>Get a contextual recommendation.</small></div></li><li><span>4</span><div><strong>Record the action</strong><small>Journal, soil, finance, or calendar.</small></div></li></ol>
+          </article>
+
+          <article class="card right-rail-card">
+            <div class="section-heading compact"><div><p class="eyebrow">Privacy</p><h2>Local records</h2></div></div>
+            <p class="muted small">Field profiles, soil tests, finance records, and journal entries are stored in your browser using local storage. API calls are made only when a live feature is used.</p>
+          </article>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="settings-dialog">
+    <form method="dialog">
+      <div class="settings-dialog-head"><div><p class="eyebrow">Preferences</p><h3>AgriGuide settings</h3></div><button class="icon-btn dialog-close" value="cancel" aria-label="Close">×</button></div>
+      <label>Language<select id="settings-lang"></select></label>
+      <div class="settings-list"><label><span><strong>Dark mode</strong><small>Use a darker interface.</small></span><input id="toggle-dark" type="checkbox" /></label></div>
+      <div class="settings-security-note"><strong>AI provider key</strong><p>Keep API keys only in <code>backend/.env</code>. Never put secrets in frontend files or Git.</p></div>
+      <menu><button class="btn primary" value="default">Done</button></menu>
+    </form>
+  </dialog>
+
+  <script type="module" src="/js/app.js?v=4"></script>
+</body>
+</html>

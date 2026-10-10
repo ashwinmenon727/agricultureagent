@@ -1,0 +1,102 @@
+{
+  "region": "Asia",
+  "crops": [
+    {
+      "id": "rice",
+      "names": {
+        "en": "Rice",
+        "hi": "धान",
+        "ta": "நெல்",
+        "bn": "ধান",
+        "zh": "水稻"
+      },
+      "seasons": ["kharif", "monsoon"],
+      "zones": ["South Asia", "Southeast Asia", "East Asia"]
+    },
+    {
+      "id": "wheat",
+      "names": {
+        "en": "Wheat",
+        "hi": "गेहूं",
+        "ta": "கோதுமை",
+        "bn": "গম",
+        "zh": "小麦"
+      },
+      "seasons": ["rabi", "winter"],
+      "zones": ["South Asia", "Central Asia", "East Asia"]
+    },
+    {
+      "id": "cotton",
+      "names": {
+        "en": "Cotton",
+        "hi": "कपास",
+        "ta": "பருத்தி",
+        "bn": "তুলা",
+        "zh": "棉花"
+      },
+      "seasons": ["kharif"],
+      "zones": ["South Asia", "Central Asia"]
+    },
+    {
+      "id": "sugarcane",
+      "names": {
+        "en": "Sugarcane",
+        "hi": "गन्ना",
+        "ta": "கரும்பு",
+        "bn": "আখ",
+        "zh": "甘蔗"
+      },
+      "seasons": ["year-round"],
+      "zones": ["South Asia", "Southeast Asia"]
+    },
+    {
+      "id": "maize",
+      "names": {
+        "en": "Maize",
+        "hi": "मक्का",
+        "ta": "மக்காச்சோளம்",
+        "bn": "ভুট্টা",
+        "zh": "玉米"
+      },
+      "seasons": ["kharif", "rabi"],
+      "zones": ["South Asia", "Southeast Asia", "East Asia"]
+    },
+    {
+      "id": "soybean",
+      "names": {
+        "en": "Soybean",
+        "hi": "सोयाबीन",
+        "ta": "சோயா",
+        "bn": "সয়াবিন",
+        "zh": "大豆"
+      },
+      "seasons": ["kharif"],
+      "zones": ["East Asia", "Southeast Asia"]
+    },
+    {
+      "id": "tea",
+      "names": {
+        "en": "Tea",
+        "hi": "चाय",
+        "ta": "தேயிலை",
+        "bn": "চা",
+        "zh": "茶"
+      },
+      "seasons": ["year-round"],
+      "zones": ["South Asia", "East Asia"]
+    },
+    {
+      "id": "palm_oil",
+      "names": {
+        "en": "Palm oil",
+        "hi": "पाम तेल",
+        "ta": "பalm எண்ணெய்",
+        "bn": "পাম তেল",
+        "zh": "棕榈油"
+      },
+      "seasons": ["year-round"],
+      "zones": ["Southeast Asia"]
+    }
+  ],
+  "topics": ["irrigation", "fertilizer", "pest", "disease", "weather", "market", "soil"]
+}

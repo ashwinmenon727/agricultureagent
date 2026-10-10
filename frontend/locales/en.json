@@ -1,0 +1,27 @@
+{
+  "appName": "AgriGuide",
+  "tagline": "Your AI farming assistant for Asia",
+  "selectLanguage": "Choose your language",
+  "continue": "Continue",
+  "changeLanguage": "Language",
+  "simpleMode": "Simple",
+  "expertMode": "Expert",
+  "lowDataMode": "Low data",
+  "voiceIn": "Speak",
+  "voiceOut": "Read aloud",
+  "send": "Send",
+  "placeholder": "Ask about crops, weather, pests, soil...",
+  "welcomeTitle": "Welcome to AgriGuide",
+  "welcomeBody": "Ask in your language. You can mix English with local words.",
+  "topics": {
+    "weather": "Weather & irrigation",
+    "pest": "Pests & disease",
+    "fertilizer": "Fertilizer",
+    "market": "Market & planning"
+  },
+  "offlineBanner": "Offline mode — using saved answers",
+  "listening": "Listening...",
+  "thinking": "Thinking...",
+  "errorNetwork": "Could not reach server. Showing offline answers if available.",
+  "settings": "Settings"
+}

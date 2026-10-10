@@ -1,0 +1,32 @@
+[
+  {
+    "id": "irrigation_rain",
+    "keywords": ["irrigation", "water", "rain", "monsoon", "sinche", "pani", "sech"],
+    "answer": "Check soil moisture 5–7 cm deep before irrigating. If rain is expected in 24–48 hours, delay irrigation. For rice, maintain shallow water during tillering; reduce before harvest. Save water with alternate wetting and drying where suitable."
+  },
+  {
+    "id": "rice_fertilizer",
+    "keywords": ["rice", "fertilizer", "urea", "npk", "dhan", "nel", "dhán"],
+    "answer": "For rice: apply basal phosphorus at planting, split nitrogen in 2–3 doses during tillering and panicle initiation. Use soil test results when possible. Avoid heavy nitrogen late in season to reduce lodging and pest risk."
+  },
+  {
+    "id": "pest_general",
+    "keywords": ["pest", "insect", "bug", "keet", "poochi", "ipm"],
+    "answer": "Start with Integrated Pest Management: scout fields twice weekly, remove heavily infested plants, use yellow sticky traps where helpful, prefer bio-pesticides before broad chemicals. Identify the pest correctly before spraying."
+  },
+  {
+    "id": "wheat_sowing",
+    "keywords": ["wheat", "sow", "plant", "gehun", "godhumai", "gom"],
+    "answer": "Wheat sowing window depends on your zone. Use certified seed, correct seed rate, and timely sowing for your region. Ensure good drainage; avoid waterlogging. Apply basal fertilizer based on soil test."
+  },
+  {
+    "id": "weather_heat",
+    "keywords": ["heat", "drought", "dry", "temperature", "weather", "garmi"],
+    "answer": "During heat stress: irrigate early morning or evening, use mulch to reduce evaporation, avoid nitrogen top-dress in peak heat, and provide shade for nursery seedlings if possible."
+  },
+  {
+    "id": "soil_test",
+    "keywords": ["soil", "ph", "nutrient", "miti", "mann"],
+    "answer": "Soil testing every 2–3 years helps right-size fertilizer use. Collect samples from multiple spots, mix well, and send to a local lab. Correct pH and organic matter before chasing high NPK doses."
+  }
+]

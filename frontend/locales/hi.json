@@ -1,0 +1,27 @@
+{
+  "appName": "AgriGuide",
+  "tagline": "एशिया के लिए आपका AI कृषि सहायक",
+  "selectLanguage": "अपनी भाषा चुनें",
+  "continue": "आगे बढ़ें",
+  "changeLanguage": "भाषा",
+  "simpleMode": "सरल",
+  "expertMode": "विशेषज्ञ",
+  "lowDataMode": "कम डेटा",
+  "voiceIn": "बोलें",
+  "voiceOut": "पढ़कर सुनाएं",
+  "send": "भेजें",
+  "placeholder": "फसल, मौसम, कीट, मिट्टी के बारे में पूछें...",
+  "welcomeTitle": "AgriGuide में आपका स्वागत है",
+  "welcomeBody": "अपनी भाषा में पूछें। आप अंग्रेज़ी और स्थानीय शब्द मिलाकर भी लिख सकते हैं।",
+  "topics": {
+    "weather": "मौसम और सिंचाई",
+    "pest": "कीट और रोग",
+    "fertilizer": "उर्वरक",
+    "market": "बाज़ार और योजना"
+  },
+  "offlineBanner": "ऑफ़लाइन — सहेजे उत्तर दिखाए जा रहे हैं",
+  "listening": "सुन रहा है...",
+  "thinking": "सोच रहा है...",
+  "errorNetwork": "सर्वर तक नहीं पहुँचा। ऑफ़लाइन उत्तर दिखाए जा सकते हैं।",
+  "settings": "सेटिंग"
+}
