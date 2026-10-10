@@ -65,6 +65,16 @@ let searchTimer = null;
 let msgCounter = 0;
 let liveRefreshTimer = null;
 
+function messageSourceLabel(source) {
+  return {
+    ai: "Vayal",
+    ai_unavailable: "Vayal unavailable",
+    fallback: "Offline fallback",
+    live_data: "Live data",
+    offline_faq: "Offline guide",
+  }[source] || source;
+}
+
 /* ---------- Enhanced appendMessage with animations ---------- */
 function appendMessage(text, role, meta = "") {
   const div = document.createElement("div");
@@ -78,7 +88,7 @@ function appendMessage(text, role, meta = "") {
   if (meta) {
     const m = document.createElement("div");
     m.className = "msg meta";
-    m.textContent = meta;
+    m.textContent = messageSourceLabel(meta);
     chatEl.appendChild(m);
   }
   chatEl.scrollTop = chatEl.scrollHeight;

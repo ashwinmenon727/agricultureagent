@@ -255,7 +255,7 @@ def fallback_reply(message: str, language: str, mode: str, live_context: str = "
         return ai_unavailable_reply(language)
 
     simple_msgs = {
-        "en": "I could not find a specific offline answer for that. Please ask a fuller farming question, for example: irrigation for rice, pest control, fertilizer use, weather, or market price. For AI answers to open-ended questions, set OPENAI_API_KEY in backend/.env.",
+        "en": "I could not find a specific offline answer for that. Please ask a fuller farming question, for example: irrigation for rice, pest control, fertilizer use, weather, or market price. For open-ended Vayal answers, add your AI provider settings in backend/.env.",
         "hi": "इसके लिए offline जवाब नहीं मिला। कृपया पूरा खेती से जुड़ा सवाल पूछें, जैसे धान की सिंचाई, कीट नियंत्रण, खाद, मौसम या मंडी भाव। खुले सवालों के AI जवाब के लिए backend/.env में OPENAI_API_KEY सेट करें।",
         "ta": "இதற்கு குறிப்பிட்ட offline பதில் கிடைக்கவில்லை. நெல் பாசனம், பூச்சி கட்டுப்பாடு, உரம், வானிலை அல்லது சந்தை விலை போன்ற முழு விவசாயக் கேள்வியை கேளுங்கள். திறந்த கேள்விகளுக்கு AI பதில்களுக்கு backend/.env-ல் OPENAI_API_KEY அமைக்கவும்.",
         "bn": "এর জন্য নির্দিষ্ট offline উত্তর পাওয়া যায়নি। ধানের সেচ, পোকা নিয়ন্ত্রণ, সার, আবহাওয়া বা বাজারদর মতো পূর্ণ কৃষি প্রশ্ন করুন। উন্মুক্ত প্রশ্নের AI উত্তরের জন্য backend/.env-এ OPENAI_API_KEY সেট করুন।",
